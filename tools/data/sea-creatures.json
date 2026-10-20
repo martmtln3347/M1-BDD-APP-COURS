@@ -1,0 +1,791 @@
+[
+    {
+        "id":  2830,
+        "name":  "sea grapes",
+        "nameFr":  "algue raisin de mer",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishUmibudouCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Umibudou.png",
+        "whereHow":  null,
+        "months":  [
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2840,
+        "name":  "sea anemone",
+        "nameFr":  "anémone de mer",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishIsogintyakuCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Isogintyaku.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2855,
+        "name":  "spotted garden eel",
+        "nameFr":  "anguille de jardin",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishChinanagoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Chinanago.png",
+        "whereHow":  null,
+        "months":  [
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10
+                   ],
+        "time":  [
+                     "4 AM – 9 PM"
+                 ]
+    },
+    {
+        "id":  2832,
+        "name":  "acorn barnacle",
+        "nameFr":  "balane",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishFujitsuboCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Fujitsubo.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2858,
+        "name":  "giant isopod",
+        "nameFr":  "bathynome géant",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishDaiougusokumushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Daiougusokumushi.png",
+        "whereHow":  null,
+        "months":  [
+                       7,
+                       8,
+                       9,
+                       10
+                   ],
+        "time":  [
+                     "9 AM – 4 PM",
+                     "9 PM – 4 AM"
+                 ]
+    },
+    {
+        "id":  7214,
+        "name":  "gigas giant clam",
+        "nameFr":  "bénitier colossal",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishShakogaiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Shakogai.png",
+        "whereHow":  null,
+        "months":  [
+                       5,
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  7278,
+        "name":  "whelk",
+        "nameFr":  "bulot",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishBaigaiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Baigai.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  6920,
+        "name":  "firefly squid",
+        "nameFr":  "calmar luciole",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishHotaruikaCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Hotaruika.png",
+        "whereHow":  null,
+        "months":  [
+                       3,
+                       4,
+                       5,
+                       6
+                   ],
+        "time":  [
+                     "9 PM – 4 AM"
+                 ]
+    },
+    {
+        "id":  7303,
+        "name":  "sea pig",
+        "nameFr":  "cochon de mer",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishSenjunamakoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Senjunamako.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "4 PM – 9 AM"
+                 ]
+    },
+    {
+        "id":  2842,
+        "name":  "sea cucumber",
+        "nameFr":  "concombre de mer",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishNamakoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Namako.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  7318,
+        "name":  "Venus\u0027 flower basket",
+        "nameFr":  "corbeille de Vénus",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishKairoudouketsuCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Kairoudouketsu.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  7308,
+        "name":  "Dungeness crab",
+        "nameFr":  "crabe de Dungeness",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishDungenessCrabCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/DungenessCrab.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2850,
+        "name":  "snow crab",
+        "nameFr":  "crabe des neiges",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishZuwaiganiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Zuwaigani.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  7191,
+        "name":  "gazami crab",
+        "nameFr":  "crabe gazami",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishGazamiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Gazami.png",
+        "whereHow":  null,
+        "months":  [
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2852,
+        "name":  "red king crab",
+        "nameFr":  "crabe royal",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishTarabaganiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Tarabagani.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2853,
+        "name":  "spider crab",
+        "nameFr":  "crabe-araignée géant",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishTakaashiganiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Takaashigani.png",
+        "whereHow":  null,
+        "months":  [
+                       3,
+                       4
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2846,
+        "name":  "sweet shrimp",
+        "nameFr":  "crevette nordique",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishAmaebiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Amaebi.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "4 PM – 9 AM"
+                 ]
+    },
+    {
+        "id":  2847,
+        "name":  "tiger prawn",
+        "nameFr":  "crevette tigrée",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishKurumaebiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Kurumaebi.png",
+        "whereHow":  null,
+        "months":  [
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "4 PM – 9 AM"
+                 ]
+    },
+    {
+        "id":  2845,
+        "name":  "mantis shrimp",
+        "nameFr":  "crevette-mante",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishSyakoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Shako.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "4 PM – 9 AM"
+                 ]
+    },
+    {
+        "id":  2841,
+        "name":  "sea star",
+        "nameFr":  "étoile de mer",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishHitodeCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Hitode.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  7228,
+        "name":  "sea pineapple",
+        "nameFr":  "halocynthia roretzi",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishHoyaCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Hoya.png",
+        "whereHow":  null,
+        "months":  [
+                       4,
+                       5,
+                       6,
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2849,
+        "name":  "lobster",
+        "nameFr":  "homard",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishLobsterCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Fish54.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       4,
+                       5,
+                       6,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2833,
+        "name":  "oyster",
+        "nameFr":  "huître",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishOysterCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Kaki.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2838,
+        "name":  "pearl oyster",
+        "nameFr":  "huître perlière",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishAkoyagaiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Akoyagai.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2848,
+        "name":  "spiny lobster",
+        "nameFr":  "langouste",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishIseebiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Iseebi.png",
+        "whereHow":  null,
+        "months":  [
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "9 PM – 4 AM"
+                 ]
+    },
+    {
+        "id":  2843,
+        "name":  "sea slug",
+        "nameFr":  "limace de mer",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishUmiushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Umiushi.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2857,
+        "name":  "horseshoe crab",
+        "nameFr":  "limule",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishKabutoganiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Kabutogani.png",
+        "whereHow":  null,
+        "months":  [
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "9 PM – 4 AM"
+                 ]
+    },
+    {
+        "id":  7245,
+        "name":  "moon jellyfish",
+        "nameFr":  "méduse lune",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishMizukurageCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Mizukurage.png",
+        "whereHow":  null,
+        "months":  [
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  7411,
+        "name":  "mussel",
+        "nameFr":  "moule",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishMuhrugaiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Muhrugai.png",
+        "whereHow":  null,
+        "months":  [
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2856,
+        "name":  "chambered nautilus",
+        "nameFr":  "nautile",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishOumugaiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Oumugai.png",
+        "whereHow":  null,
+        "months":  [
+                       3,
+                       4,
+                       5,
+                       6,
+                       9,
+                       10,
+                       11
+                   ],
+        "time":  [
+                     "4 PM – 9 AM"
+                 ]
+    },
+    {
+        "id":  2835,
+        "name":  "abalone",
+        "nameFr":  "ormeau",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishAwabiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Awabi.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "4 PM – 9 AM"
+                 ]
+    },
+    {
+        "id":  2831,
+        "name":  "sea urchin",
+        "nameFr":  "oursin",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishUniCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Uni.png",
+        "whereHow":  null,
+        "months":  [
+                       5,
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  7267,
+        "name":  "slate pencil urchin",
+        "nameFr":  "oursin crayon",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishPaipuuniCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Paipuuni.png",
+        "whereHow":  null,
+        "months":  [
+                       5,
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "4 PM – 9 AM"
+                 ]
+    },
+    {
+        "id":  2839,
+        "name":  "scallop",
+        "nameFr":  "pétoncle",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishHotateCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Hotate.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  7252,
+        "name":  "umbrella octopus",
+        "nameFr":  "pieuvre parapluie",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishMendakoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Mendako.png",
+        "whereHow":  null,
+        "months":  [
+                       3,
+                       4,
+                       5,
+                       9,
+                       10,
+                       11
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2854,
+        "name":  "octopus",
+        "nameFr":  "poulpe",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishTakoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Tako.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  2834,
+        "name":  "turban shell",
+        "nameFr":  "turbo",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishSazaeCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Sazae.png",
+        "whereHow":  null,
+        "months":  [
+                       3,
+                       4,
+                       5,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  7203,
+        "name":  "vampire squid",
+        "nameFr":  "vampire des abysses",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishKoumoridakoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Koumoridako.png",
+        "whereHow":  null,
+        "months":  [
+                       5,
+                       6,
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "4 PM – 9 AM"
+                 ]
+    },
+    {
+        "id":  2844,
+        "name":  "flatworm",
+        "nameFr":  "ver plat",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishHiramushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Hiramushi.png",
+        "whereHow":  null,
+        "months":  [
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "4 PM – 9 AM"
+                 ]
+    },
+    {
+        "id":  2620,
+        "name":  "seaweed",
+        "nameFr":  "wakame",
+        "image":  "https://acnhcdn.com/latest/BookDiveFishIcon/DiveFishWakameCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Wakame.png",
+        "whereHow":  null,
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    }
+]

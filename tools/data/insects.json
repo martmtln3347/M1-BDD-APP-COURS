@@ -1,0 +1,1495 @@
+[
+    {
+        "id":  623,
+        "name":  "honeybee",
+        "nameFr":  "abeille naine",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectMitsubachiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins11.png",
+        "whereHow":  "Flying near flowers",
+        "months":  [
+                       3,
+                       4,
+                       5,
+                       6,
+                       7
+                   ],
+        "time":  [
+                     "8 AM – 5 PM"
+                 ]
+    },
+    {
+        "id":  644,
+        "name":  "long locust",
+        "nameFr":  "acrida cinerea",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectShoryobattaCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins13.png",
+        "whereHow":  "On the ground",
+        "months":  [
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11
+                   ],
+        "time":  [
+                     "8 AM – 7 PM"
+                 ]
+    },
+    {
+        "id":  620,
+        "name":  "agrias butterfly",
+        "nameFr":  "agrias",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectMiirotatehaCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins6.png",
+        "whereHow":  "Flying near flowers",
+        "months":  [
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "8 AM – 5 PM"
+                 ]
+    },
+    {
+        "id":  595,
+        "name":  "darner dragonfly",
+        "nameFr":  "anax napolitain",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectGinyanmaCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins23.png",
+        "whereHow":  "Flying near water",
+        "months":  [
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10
+                   ],
+        "time":  [
+                     "8 AM – 5 PM"
+                 ]
+    },
+    {
+        "id":  619,
+        "name":  "spider",
+        "nameFr":  "araignée",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectKumoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins61.png",
+        "whereHow":  "Shaking trees (hardwood or cedar only)",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "7 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  652,
+        "name":  "Atlas moth",
+        "nameFr":  "attacus Atlas",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectYonagunisanCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins10.png",
+        "whereHow":  "On trees (any kind)",
+        "months":  [
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "7 PM – 4 AM"
+                 ]
+    },
+    {
+        "id":  651,
+        "name":  "hermit crab",
+        "nameFr":  "bernard-l\u0027ermite",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectYadokariCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins66.png",
+        "whereHow":  "Disguised on shoreline",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "7 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  604,
+        "name":  "dung beetle",
+        "nameFr":  "bousier",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectFunkorogashiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins40.png",
+        "whereHow":  "Pushing snowballs",
+        "months":  [
+                       1,
+                       2,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  645,
+        "name":  "jewel beetle",
+        "nameFr":  "bupreste",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectTamamushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins44.png",
+        "whereHow":  "On tree stumps",
+        "months":  [
+                       4,
+                       5,
+                       6,
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  609,
+        "name":  "citrus long-horned beetle",
+        "nameFr":  "capricorne des agrumes",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectGomadarakamikiriCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins39.png",
+        "whereHow":  "On tree stumps",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  3483,
+        "name":  "man-faced stink bug",
+        "nameFr":  "catacanthus",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectJinmenkamemushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins78.png",
+        "whereHow":  "On flowers",
+        "months":  [
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10
+                   ],
+        "time":  [
+                     "7 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  3485,
+        "name":  "blue weevil beetle",
+        "nameFr":  "charançon bleu",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectHousekizoumushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins80.png",
+        "whereHow":  "On palm trees",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  3484,
+        "name":  "Madagascan sunset moth",
+        "nameFr":  "chrysiridia rhipheus",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectNishikiohtsubamegaCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins79.png",
+        "whereHow":  "Flying near flowers",
+        "months":  [
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "8 AM – 4 PM"
+                 ]
+    },
+    {
+        "id":  599,
+        "name":  "tiger beetle",
+        "nameFr":  "cicindèle",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectHanmyouCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins70.png",
+        "whereHow":  "On the ground",
+        "months":  [
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  582,
+        "name":  "brown cicada",
+        "nameFr":  "cigale cercope",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectAburazemiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins17.png",
+        "whereHow":  "On hardwood/cedar trees",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "8 AM – 5 PM"
+                 ]
+    },
+    {
+        "id":  649,
+        "name":  "walker cicada",
+        "nameFr":  "cigale cicadelle",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectTsukutsukuhousiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins19.png",
+        "whereHow":  "On hardwood/cedar trees",
+        "months":  [
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "8 AM – 5 PM"
+                 ]
+    },
+    {
+        "id":  618,
+        "name":  "giant cicada",
+        "nameFr":  "cigale géante",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectKumazemiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins65.png",
+        "whereHow":  "On hardwood/cedar trees",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "8 AM – 5 PM"
+                 ]
+    },
+    {
+        "id":  601,
+        "name":  "evening cicada",
+        "nameFr":  "cigale higurashi",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectHigurashiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins20.png",
+        "whereHow":  "On hardwood/cedar trees",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "4 AM – 8 AM",
+                     "4 PM – 7 PM"
+                 ]
+    },
+    {
+        "id":  621,
+        "name":  "robust cicada",
+        "nameFr":  "cigale hyalessa",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectMinminzemiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins18.png",
+        "whereHow":  "On hardwood/cedar trees",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "8 AM – 5 PM"
+                 ]
+    },
+    {
+        "id":  625,
+        "name":  "yellow butterfly",
+        "nameFr":  "citrin",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectMonkichoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins1.png",
+        "whereHow":  "Flying",
+        "months":  [
+                       3,
+                       4,
+                       5,
+                       6,
+                       9,
+                       10
+                   ],
+        "time":  [
+                     "4 AM – 7 PM"
+                 ]
+    },
+    {
+        "id":  590,
+        "name":  "pill bug",
+        "nameFr":  "cloporte",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectDangomushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins57.png",
+        "whereHow":  "From hitting rocks",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "11 PM – 4 PM"
+                 ]
+    },
+    {
+        "id":  647,
+        "name":  "ladybug",
+        "nameFr":  "coccinelle",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectTentoumushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins37.png",
+        "whereHow":  "On flowers",
+        "months":  [
+                       3,
+                       4,
+                       5,
+                       6,
+                       10
+                   ],
+        "time":  [
+                     "8 AM – 5 PM"
+                 ]
+    },
+    {
+        "id":  635,
+        "name":  "banded dragonfly",
+        "nameFr":  "cordulégastre",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectOniyanmaCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins24.png",
+        "whereHow":  "Flying near water",
+        "months":  [
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10
+                   ],
+        "time":  [
+                     "8 AM – 5 PM"
+                 ]
+    },
+    {
+        "id":  605,
+        "name":  "rice grasshopper",
+        "nameFr":  "criquet",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectInagoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins67.png",
+        "whereHow":  "On the ground",
+        "months":  [
+                       8,
+                       9,
+                       10,
+                       11
+                   ],
+        "time":  [
+                     "8 AM – 7 PM"
+                 ]
+    },
+    {
+        "id":  648,
+        "name":  "migratory locust",
+        "nameFr":  "criquet pèlerin",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectTonosamabattaCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins14.png",
+        "whereHow":  "On the ground",
+        "months":  [
+                       8,
+                       9,
+                       10,
+                       11
+                   ],
+        "time":  [
+                     "8 AM – 7 PM"
+                 ]
+    },
+    {
+        "id":  5339,
+        "name":  "damselfly",
+        "nameFr":  "demoiselle",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectItotonboCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins81.png",
+        "whereHow":  "Flying near water",
+        "months":  [
+                       1,
+                       2,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  594,
+        "name":  "diving beetle",
+        "nameFr":  "dytique",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectGengorouCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins28.png",
+        "whereHow":  "On rivers/ponds",
+        "months":  [
+                       5,
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "8 AM – 7 PM"
+                 ]
+    },
+    {
+        "id":  611,
+        "name":  "snail",
+        "nameFr":  "escargot",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectKatatsumuriCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins29.png",
+        "whereHow":  "On rocks/bushes",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  588,
+        "name":  "ant",
+        "nameFr":  "fourmi",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectAriCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins26.png",
+        "whereHow":  "On rotten turnips or candy",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  614,
+        "name":  "earth-boring dung beetle",
+        "nameFr":  "geotrupidae",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectOhsenchikoganeCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins42.png",
+        "whereHow":  "On the ground",
+        "months":  [
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  3478,
+        "name":  "paper kite butterfly",
+        "nameFr":  "grand planeur",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectOhgomamadaraCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins73.png",
+        "whereHow":  "Flying near flowers",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "8 AM – 7 PM"
+                 ]
+    },
+    {
+        "id":  3477,
+        "name":  "common bluebottle",
+        "nameFr":  "graphium sarpedon",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectAosujiagehaCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins72.png",
+        "whereHow":  "Flying",
+        "months":  [
+                       4,
+                       5,
+                       6,
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "4 AM – 7 PM"
+                 ]
+    },
+    {
+        "id":  617,
+        "name":  "cricket",
+        "nameFr":  "grillon des prés",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectKohrogiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins30.png",
+        "whereHow":  "On the ground",
+        "months":  [
+                       9,
+                       10,
+                       11
+                   ],
+        "time":  [
+                     "5 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  642,
+        "name":  "bell cricket",
+        "nameFr":  "grillon du Midi",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectSuzumushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins31.png",
+        "whereHow":  "On the ground",
+        "months":  [
+                       9,
+                       10
+                   ],
+        "time":  [
+                     "5 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  643,
+        "name":  "wasp",
+        "nameFr":  "guêpe",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectHachiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins12.png",
+        "whereHow":  "Shaking trees",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  591,
+        "name":  "wharf roach",
+        "nameFr":  "ligie",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectFunamushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins71.png",
+        "whereHow":  "On beach rocks",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  637,
+        "name":  "giant stag",
+        "nameFr":  "lucane cerf-volant",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectOhkuwagataCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins47.png",
+        "whereHow":  "On trees (any kind)",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "11 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  631,
+        "name":  "rainbow stag",
+        "nameFr":  "lucane copris irisé",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectNijiirokuwagataCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins48.png",
+        "whereHow":  "On trees (any kind)",
+        "months":  [
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "7 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  602,
+        "name":  "cyclommatus stag",
+        "nameFr":  "lucane cyclommatus",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectHosoakakuwagataCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins49.png",
+        "whereHow":  "On palm trees",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "5 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  3482,
+        "name":  "giraffe stag",
+        "nameFr":  "lucane girafe",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectGirafanokogirikuwagataCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins77.png",
+        "whereHow":  "On palm trees",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "5 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  632,
+        "name":  "saw stag",
+        "nameFr":  "lucane inclinatus",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectNokogirikuwagataCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins46.png",
+        "whereHow":  "On trees (any kind)",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  638,
+        "name":  "golden stag",
+        "nameFr":  "lucane lamprima",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectOugononikuwagataCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins50.png",
+        "whereHow":  "On palm trees",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "5 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  624,
+        "name":  "miyama stag",
+        "nameFr":  "lucane miyama",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectMiyamakuwagataCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins45.png",
+        "whereHow":  "On trees (any kind)",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  603,
+        "name":  "firefly",
+        "nameFr":  "luciole",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectHotaruCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins41.png",
+        "whereHow":  "Flying near water",
+        "months":  [
+                       6
+                   ],
+        "time":  [
+                     "7 PM – 4 AM"
+                 ]
+    },
+    {
+        "id":  583,
+        "name":  "tiger butterfly",
+        "nameFr":  "machaon",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectAgehachoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins2.png",
+        "whereHow":  "Flying",
+        "months":  [
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "4 AM – 7 PM"
+                 ]
+    },
+    {
+        "id":  598,
+        "name":  "orchid mantis",
+        "nameFr":  "mante orchidée",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectHanakamakiriCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins16.png",
+        "whereHow":  "On white flowers",
+        "months":  [
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11
+                   ],
+        "time":  [
+                     "8 AM – 5 PM"
+                 ]
+    },
+    {
+        "id":  607,
+        "name":  "mantis",
+        "nameFr":  "mante religieuse",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectKamakiriCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins15.png",
+        "whereHow":  "On flowers",
+        "months":  [
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11
+                   ],
+        "time":  [
+                     "8 AM – 5 PM"
+                 ]
+    },
+    {
+        "id":  628,
+        "name":  "centipede",
+        "nameFr":  "mille-pattes",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectMukadeCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins60.png",
+        "whereHow":  "From hitting rocks",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "4 PM – 11 PM"
+                 ]
+    },
+    {
+        "id":  636,
+        "name":  "monarch butterfly",
+        "nameFr":  "monarque",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectOhkabamadaraCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins4.png",
+        "whereHow":  "Flying near flowers",
+        "months":  [
+                       9,
+                       10,
+                       11
+                   ],
+        "time":  [
+                     "4 AM – 5 PM"
+                 ]
+    },
+    {
+        "id":  650,
+        "name":  "violin beetle",
+        "nameFr":  "mormolyce",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectBaiorinmushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins38.png",
+        "whereHow":  "On tree stumps",
+        "months":  [
+                       5,
+                       6,
+                       9,
+                       10,
+                       11
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  627,
+        "name":  "emperor butterfly",
+        "nameFr":  "morpho bleu",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectMorufuochoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins5.png",
+        "whereHow":  "Flying near flowers",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       6,
+                       7,
+                       8,
+                       9,
+                       12
+                   ],
+        "time":  [
+                     "5 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  597,
+        "name":  "fly",
+        "nameFr":  "mouche",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectHaeCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins59.png",
+        "whereHow":  "Flying near trash (boots, tires, cans, used fountain fireworks) or rotten turnips",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  606,
+        "name":  "mosquito",
+        "nameFr":  "moustique",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectKaCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins58.png",
+        "whereHow":  "Flying",
+        "months":  [
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "5 PM – 4 AM"
+                 ]
+    },
+    {
+        "id":  641,
+        "name":  "cicada shell",
+        "nameFr":  "mue de cigale",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectSeminonukegaraCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins69.png",
+        "whereHow":  "On hardwood/cedar trees",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  610,
+        "name":  "peacock butterfly",
+        "nameFr":  "papilio bianor",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectKarasuagehaCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins3.png",
+        "whereHow":  "Flying near blue/purple/black flowers",
+        "months":  [
+                       3,
+                       4,
+                       5,
+                       6
+                   ],
+        "time":  [
+                     "4 AM – 7 PM"
+                 ]
+    },
+    {
+        "id":  592,
+        "name":  "moth",
+        "nameFr":  "papillon de nuit",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectGaCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins9.png",
+        "whereHow":  "Flying near light sources",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "7 PM – 4 AM"
+                 ]
+    },
+    {
+        "id":  587,
+        "name":  "pondskater",
+        "nameFr":  "patineur",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectAmenboCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins27.png",
+        "whereHow":  "On rivers/ponds",
+        "months":  [
+                       5,
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "8 AM – 7 PM"
+                 ]
+    },
+    {
+        "id":  630,
+        "name":  "walking stick",
+        "nameFr":  "phasme",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectNanafushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins35.png",
+        "whereHow":  "On trees (any kind)",
+        "months":  [
+                       7,
+                       8,
+                       9,
+                       10,
+                       11
+                   ],
+        "time":  [
+                     "4 AM – 8 AM",
+                     "5 PM – 7 PM"
+                 ]
+    },
+    {
+        "id":  616,
+        "name":  "walking leaf",
+        "nameFr":  "phyllie",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectKonohamushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins34.png",
+        "whereHow":  "Disguised under trees",
+        "months":  [
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  626,
+        "name":  "common butterfly",
+        "nameFr":  "piéride de la rave",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectMonshirochoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins0.png",
+        "whereHow":  "Flying",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "4 AM – 7 PM"
+                 ]
+    },
+    {
+        "id":  3480,
+        "name":  "drone beetle",
+        "nameFr":  "pseudotorynorrhina",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectKanabunCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins75.png",
+        "whereHow":  "On trees (any kind)",
+        "months":  [
+                       6,
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  622,
+        "name":  "bagworm",
+        "nameFr":  "psyché",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectMinomushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins36.png",
+        "whereHow":  "Shaking trees (hardwood or cedar only)",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  633,
+        "name":  "flea",
+        "nameFr":  "puce",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectNomiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins56.png",
+        "whereHow":  "On villagers",
+        "months":  [
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10,
+                       11
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  608,
+        "name":  "stinkbug",
+        "nameFr":  "punaise",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectKamemushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins64.png",
+        "whereHow":  "On flowers",
+        "months":  [
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  5157,
+        "name":  "giant water bug",
+        "nameFr":  "punaise d\u0027eau géante",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectTagameCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins76.png",
+        "whereHow":  "On rivers/ponds",
+        "months":  [
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "7 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  3487,
+        "name":  "rosalia batesi beetle",
+        "nameFr":  "rosalia batesi",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectRuriboshikamikiriCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins82.png",
+        "whereHow":  "On tree stumps",
+        "months":  [
+                       5,
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  3479,
+        "name":  "great purple emperor",
+        "nameFr":  "sasakia charonda",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectOhmurasakiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins74.png",
+        "whereHow":  "Flying near flowers",
+        "months":  [
+                       5,
+                       6,
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "4 AM – 7 PM"
+                 ]
+    },
+    {
+        "id":  613,
+        "name":  "grasshopper",
+        "nameFr":  "sauterelle",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectKirigirisuCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins32.png",
+        "whereHow":  "On the ground",
+        "months":  [
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "8 AM – 5 PM"
+                 ]
+    },
+    {
+        "id":  639,
+        "name":  "scarab beetle",
+        "nameFr":  "scarabée",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectPurachinakoganeCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins43.png",
+        "whereHow":  "On trees (any kind)",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "11 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  615,
+        "name":  "horned atlas",
+        "nameFr":  "scarabée Atlas",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectKohkasasuohkabutoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins52.png",
+        "whereHow":  "On palm trees",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "5 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  653,
+        "name":  "horned elephant",
+        "nameFr":  "scarabée éléphant",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectZoukabutoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins53.png",
+        "whereHow":  "On palm trees",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "5 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  596,
+        "name":  "goliath beetle",
+        "nameFr":  "scarabée Goliath",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectGoraiasuohtsunohanamuguriCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins55.png",
+        "whereHow":  "On palm trees",
+        "months":  [
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "5 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  600,
+        "name":  "horned hercules",
+        "nameFr":  "scarabée Hercule",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectHerakuresuohkabutoCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins54.png",
+        "whereHow":  "On palm trees",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "5 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  612,
+        "name":  "horned dynastid",
+        "nameFr":  "scarabée kabuto",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectKabutomushiCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins51.png",
+        "whereHow":  "On trees (any kind)",
+        "months":  [
+                       7,
+                       8
+                   ],
+        "time":  [
+                     "5 PM – 8 AM"
+                 ]
+    },
+    {
+        "id":  640,
+        "name":  "scorpion",
+        "nameFr":  "scorpion",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectSasoriCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins63.png",
+        "whereHow":  "On the ground",
+        "months":  [
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10
+                   ],
+        "time":  [
+                     "7 PM – 4 AM"
+                 ]
+    },
+    {
+        "id":  585,
+        "name":  "red dragonfly",
+        "nameFr":  "sympetrum",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectAkiakaneCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins22.png",
+        "whereHow":  "Flying near water",
+        "months":  [
+                       9,
+                       10
+                   ],
+        "time":  [
+                     "8 AM – 7 PM"
+                 ]
+    },
+    {
+        "id":  646,
+        "name":  "tarantula",
+        "nameFr":  "tarentule",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectTaranchuraCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins62.png",
+        "whereHow":  "On the ground",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "7 PM – 4 AM"
+                 ]
+    },
+    {
+        "id":  634,
+        "name":  "mole cricket",
+        "nameFr":  "taupe-grillon",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectOkeraCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins33.png",
+        "whereHow":  "Underground (dig where noise is loudest)",
+        "months":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       11,
+                       12
+                   ],
+        "time":  [
+                     "All day"
+                 ]
+    },
+    {
+        "id":  586,
+        "name":  "Queen Alexandra\u0027s birdwing",
+        "nameFr":  "troides alexandrae",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectArekisandoratoribaneagehaCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins8.png",
+        "whereHow":  "Flying near flowers",
+        "months":  [
+                       5,
+                       6,
+                       7,
+                       8,
+                       9
+                   ],
+        "time":  [
+                     "8 AM – 4 PM"
+                 ]
+    },
+    {
+        "id":  584,
+        "name":  "Rajah Brooke\u0027s birdwing",
+        "nameFr":  "troides brookiana",
+        "image":  "https://acnhcdn.com/latest/BookInsectIcon/InsectAkaeritoribaneagehaCropped.png",
+        "icon":  "https://acnhcdn.com/latest/MenuIcon/Ins7.png",
+        "whereHow":  "Flying near flowers",
+        "months":  [
+                       1,
+                       2,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       12
+                   ],
+        "time":  [
+                     "8 AM – 5 PM"
+                 ]
+    }
+]
