@@ -1,0 +1,39 @@
+Output format is unaligned.
+BEGIN
+ANALYZE
+=== AVANT : sans index ===
+DROP INDEX
+Finalize Aggregate (actual time=7.819..8.694 rows=1 loops=1)
+  Buffers: shared hit=1830
+  ->  Gather (actual time=7.776..8.690 rows=2 loops=1)
+        Workers Planned: 1
+        Workers Launched: 1
+        Buffers: shared hit=1830
+        ->  Partial Aggregate (actual time=6.999..6.999 rows=1 loops=2)
+              Buffers: shared hit=1830
+              ->  Parallel Seq Scan on collections (actual time=0.005..6.919 rows=2142 loops=2)
+                    Filter: (possede AND (obtenu_le >= (now() - '48:00:00'::interval)))
+                    Rows Removed by Filter: 134138
+                    Buffers: shared hit=1830
+Planning:
+  Buffers: shared hit=22
+Planning Time: 0.117 ms
+Execution Time: 8.715 ms
+
+=== APRES : index partiel (obtenu_le DESC) WHERE possede ===
+CREATE INDEX
+ANALYZE
+Aggregate (actual time=0.394..0.394 rows=1 loops=1)
+  Buffers: shared hit=3 read=6
+  ->  Index Only Scan using idx_collections_obtenu_le on collections (actual time=0.029..0.255 rows=4285 loops=1)
+        Index Cond: (obtenu_le >= (now() - '48:00:00'::interval))
+        Heap Fetches: 26
+        Buffers: shared hit=3 read=6
+Planning:
+  Buffers: shared hit=8 read=1
+Planning Time: 0.077 ms
+Execution Time: 0.422 ms
+
+=== Taille de l'index vs taille de la table ===
+index partiel : 1944 kB | table collections : 14 MB
+ROLLBACK

@@ -1,0 +1,18 @@
+flowchart LR
+    nav["Navigateur<br/>pages PHP + JavaScript"]
+    subgraph app["Conteneur app : PHP 8.3"]
+        api["API JSON<br/>api/*.php"]
+        ctrl["Controleurs"]
+        mod["Modeles<br/>PDO + client RESP"]
+        api --> ctrl --> mod
+    end
+    pg[("PostgreSQL 16<br/>SOURCE DE VERITE<br/>comptes, items, collections,<br/>amities, RLS, vues, triggers")]
+    rd[("Redis 7<br/>INDEX DERIVES ET ETAT EPHEMERE<br/>sessions, classements, cache,<br/>notifications, compteurs")]
+    loader["peupler-redis<br/>(tache ponctuelle)"]
+
+    nav -- "HTTP + JSON" --> api
+    mod -- "role acnh_app<br/>droits limites + RLS" --> pg
+    mod -- "AUTH + commandes RESP" --> rd
+    loader -- "role acnh_admin (lecture)" --> pg
+    loader -- "ZADD" --> rd
+    pg -. "ecriture acceptee puis<br/>repercutee dans Redis" .-> rd

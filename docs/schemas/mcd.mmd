@@ -1,0 +1,53 @@
+erDiagram
+    USERS ||--o{ COLLECTIONS : "possede"
+    ITEMS ||--o{ COLLECTIONS : "est possede"
+    USERS ||--o{ AMITIES : "demande"
+    USERS ||--o{ AMITIES : "recoit"
+    USERS ||--o{ ACTIVITES : "genere"
+    ITEMS ||--o{ ACTIVITES : "concerne"
+    USERS ||--o{ TOKENS : "detient"
+    ITEMS |o--o| ITEMS : "est la contrefacon de"
+    ITEMS |o--o{ USERS : "est la photo de profil de"
+
+    USERS {
+        int id PK
+        text pseudo UK
+        text email UK
+        text mot_de_passe_hash
+        enum visibilite
+        bool email_verifie
+        int avatar_item_id FK
+    }
+    ITEMS {
+        int id PK
+        enum categorie
+        text nom
+        int est_contrefacon_de FK
+    }
+    COLLECTIONS {
+        int user_id PK,FK
+        int item_id PK,FK
+        bool possede
+        bool au_musee
+        timestamptz obtenu_le
+        timestamptz donne_le
+    }
+    AMITIES {
+        int demandeur_id PK,FK
+        int destinataire_id PK,FK
+        enum statut
+    }
+    ACTIVITES {
+        int id PK
+        int user_id FK
+        int item_id FK
+        enum type
+        timestamptz cree_le
+    }
+    TOKENS {
+        int id PK
+        int user_id FK
+        text token UK
+        enum type
+        timestamptz expire_le
+    }
