@@ -1,0 +1,22 @@
+# Jamais servis : fichiers caches (.env, .git, .htaccess...), depot Git et
+# fichiers de travail. Le serveur integre de PHP ignore ce fichier : il faut
+# le lancer avec router.php (voir le README).
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+RedirectMatch 404 ^.*/\.git(/|$)
+RedirectMatch 404 ^.*/(data|node_modules)/
+
+# Le .env contient les identifiants de la base : il ne doit jamais etre servi.
+# Idem pour les scripts SQL, le generateur de seed et les notes du projet.
+<FilesMatch "^\.env$|^autoload\.php$|\.(sql|py|md|txt|sh|json|yml|log)$|^(composer|package)\.">
+    Require all denied
+</FilesMatch>
+
+# Les trois couches de l'application sont incluses par le code, jamais
+# appelees par URL : seuls les points d'entree de api/ sont publics.
+RedirectMatch 404 ^.*/(modeles|controleurs|vues|db)/
+
+# Pas de listing de repertoire, et index.php comme page d'accueil.
+Options -Indexes
+DirectoryIndex index.php

@@ -1,0 +1,5 @@
+.env
+.DS_Store
+
+# Notes de cadrage internes, gardees hors du depot
+spec-projet-acnh-bdd.txt

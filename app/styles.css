@@ -1,0 +1,1267 @@
+/* ============================================================
+   Nook Manager — le passeport.
+
+   L'appli est un carnet de voyage de l'île : fond teal profond, billets
+   perforés qu'on tamponne, jaune de la monnaie du jeu pour tout ce qui
+   se touche. Chaque fiche est un billet : un talon (la photo), une
+   ligne de déchirure pointillée, puis la souche qu'on coche.
+   ============================================================ */
+
+:root {
+  /* Fond et encre */
+  --fond: #75492a;
+  --fond-profond: #3d2414;
+  --fond-leger: #8a5a35;
+  --trait-fond: rgba(255, 243, 214, 0.28);
+
+  /* Papier des billets : blanc teinté de vert, jamais crème */
+  --papier: #fff8e8;
+  --papier-2: #f6e8c8;
+  --papier-3: #ead5a6;
+  --encre: #3d2414;
+  --encre-douce: #735238;
+  --sur-fond: #fffaf0;
+  --sur-fond-doux: #f3e3c3;
+
+  /* Accents */
+  --jaune: #ffe07a;
+  --jaune-clair: #fff0b3;
+  --jaune-fonce: #e3b83a;
+  --orange: #ff5d34;
+  --orange-fonce: #c9380f;
+  --aqua: #7fd6e8;
+  --menthe: #9fe3c6;
+  --rose: #ffb3c1;
+  --alerte: #b3261e;
+  --alerte-pale: #fde3e0;
+
+  /* Typographie */
+  --police-titre: "Unbounded", "Arial Rounded MT Bold", system-ui, sans-serif;
+  --police-texte: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --police-donnees: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Formes */
+  --r-billet: 18px;
+  --r-champ: 12px;
+  --r-pilule: 999px;
+  --perfo: 9px;
+
+  /* Profondeur : un décalage net, un flou doux */
+  --ombre-billet: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 10px 18px -6px rgba(25, 12, 5, 0.55), 0 2px 4px rgba(25, 12, 5, 0.35);
+  --ombre-billet-haut: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 22px 30px -10px rgba(25, 12, 5, 0.6), 0 4px 8px rgba(25, 12, 5, 0.35);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --hauteur-nav: 64px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--hauteur-nav) + 16px);
+  scrollbar-color: var(--jaune) var(--fond-profond);
+  scrollbar-width: thin;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--police-texte);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--sur-fond);
+  background-color: var(--fond);
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+
+::selection { background: var(--jaune); color: var(--encre); }
+:focus-visible { outline: 3px solid var(--jaune); outline-offset: 3px; border-radius: 6px; }
+input, select, textarea { caret-color: var(--orange); }
+
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: var(--fond-profond); }
+::-webkit-scrollbar-thumb { background: var(--jaune); border-radius: 8px; border: 3px solid var(--fond-profond); }
+
+a { color: var(--jaune-clair); text-underline-offset: 0.22em; text-decoration-thickness: 2px; }
+a:hover { color: #fff; }
+
+h1, h2, h3 { text-wrap: balance; }
+
+/* ---------- Icônes ---------- */
+.icone {
+  width: 1.15em;
+  height: 1.15em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: -0.2em;
+}
+.icone--plein { fill: currentColor; }
+.avec-icone { display: inline-flex; align-items: center; gap: 0.45em; }
+.avec-icone > .icone { vertical-align: 0; }
+
+/* ---------- Barre de navigation : le bandeau du passeport ---------- */
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--fond-profond);
+  border-bottom: 3px solid var(--jaune);
+  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.55);
+}
+
+.top-nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  min-height: var(--hauteur-nav);
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px 26px;
+}
+
+.top-nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+  font-family: var(--police-titre);
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--sur-fond);
+}
+.top-nav-brand:hover { color: var(--jaune); }
+
+.top-nav-feuille {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--papier);
+  object-fit: contain;
+  transform: rotate(-12deg);
+  transition: transform 0.35s var(--ease);
+}
+.top-nav-brand:hover .top-nav-feuille { transform: rotate(14deg) scale(1.08); }
+
+.top-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.top-nav-links::-webkit-scrollbar { display: none; }
+
+.top-nav-link {
+  flex: none;
+  padding: 8px 13px;
+  border-radius: var(--r-pilule);
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  color: var(--sur-fond-doux);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.top-nav-link:hover { color: #fff; background: rgba(255, 255, 255, 0.09); }
+.top-nav-link.is-active { background: var(--jaune); color: var(--encre); }
+
+.top-nav-compte {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+
+.top-nav-pseudo {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--police-donnees);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--sur-fond);
+}
+
+.top-nav-bouton {
+  appearance: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 2px solid var(--jaune);
+  border-radius: var(--r-pilule);
+  background: transparent;
+  font: 700 0.88rem var(--police-texte);
+  text-decoration: none;
+  color: var(--jaune);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+.top-nav-bouton:hover { background: var(--jaune); color: var(--encre); }
+.top-nav-bouton:disabled { opacity: 0.5; cursor: wait; }
+
+@media (max-width: 1120px) {
+  .top-nav-inner { flex-wrap: wrap; padding: 10px 16px; gap: 6px 12px; }
+  .top-nav-compte { order: 2; }
+  .top-nav-links { order: 3; flex-basis: 100%; margin: 0 -4px; }
+  .top-nav-brand { font-size: 0.95rem; }
+}
+
+/* ---------- En-tête de page ---------- */
+.site-header {
+  position: relative;
+  padding: 56px 20px 26px;
+}
+
+.header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-bottom: 28px;
+  border-bottom: 2px dashed var(--trait-fond);
+}
+
+.site-header h1 {
+  margin: 0;
+  max-width: 18ch;
+  font-family: var(--police-titre);
+  font-weight: 800;
+  font-size: clamp(2rem, 5.4vw, 4.1rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  color: #fff;
+}
+
+.subtitle {
+  margin: 18px 0 0;
+  max-width: 60ch;
+  font-size: 1.08rem;
+  color: var(--sur-fond-doux);
+}
+.subtitle strong { color: var(--jaune); font-weight: 700; }
+
+/* ---------- Bandeau « connecte-toi » et notifications ---------- */
+.bandeau-connexion {
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto 6px;
+  padding: 13px 18px;
+  border-radius: var(--r-champ);
+  background: var(--jaune);
+  color: var(--encre);
+  font-weight: 600;
+}
+.bandeau-connexion a { color: var(--encre); font-weight: 800; }
+.bandeau-connexion a:hover { color: var(--orange-fonce); }
+
+.notice {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 90;
+  max-width: min(92vw, 460px);
+  padding: 13px 20px;
+  border-radius: var(--r-champ);
+  background: var(--papier);
+  color: var(--encre);
+  font-weight: 600;
+  box-shadow: var(--ombre-billet-haut);
+  transform: translate(-50%, 24px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s var(--ease), opacity 0.25s;
+}
+.notice.is-visible { transform: translate(-50%, 0); opacity: 1; }
+.notice.is-erreur { background: var(--alerte-pale); color: var(--alerte); }
+
+/* ---------- Mise en page ---------- */
+main { padding: 0 20px; }
+main > section, main > nav, main > p, main > form, main > div { max-width: 1240px; margin-left: auto; margin-right: auto; }
+
+/* ---------- Index des races ---------- */
+.race-index {
+  margin-top: 26px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px 16px;
+  flex-wrap: wrap;
+}
+.race-index-label { font-weight: 700; color: var(--sur-fond-doux); font-size: 0.9rem; flex: none; }
+.race-index-links { display: flex; flex-wrap: wrap; gap: 6px; }
+.race-index-link {
+  padding: 4px 12px;
+  border-radius: var(--r-pilule);
+  border: 1.5px solid var(--trait-fond);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--sur-fond);
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+}
+.race-index-link:hover { background: var(--jaune); border-color: var(--jaune); color: var(--encre); }
+
+/* ---------- Filtres ---------- */
+.controls {
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px 14px;
+}
+
+.search-wrap { position: relative; flex: 1 1 280px; min-width: 0; }
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  color: var(--encre-douce);
+  pointer-events: none;
+}
+
+input[type="search"],
+input[type="text"],
+input[type="email"],
+input[type="password"],
+.select-wrap select {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 16px;
+  border: 2px solid transparent;
+  border-radius: var(--r-champ);
+  background: var(--papier);
+  color: var(--encre);
+  font: 500 1rem var(--police-texte);
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+#search { padding-left: 46px; }
+input::placeholder { color: #7d5f42; opacity: 1; }
+input:focus, select:focus { outline: none; border-color: var(--jaune); box-shadow: 0 0 0 4px rgba(255, 224, 122, 0.35); }
+
+.select-wrap { flex: 0 1 220px; display: flex; flex-direction: column; gap: 6px; min-width: 150px; }
+.select-wrap label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sur-fond-doux);
+}
+.select-wrap select {
+  appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233d2414' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 18px;
+}
+
+.toggle-btn,
+.favorites-toggle,
+.reset-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 50px;
+  padding: 0 20px;
+  border-radius: var(--r-champ);
+  font: 700 0.95rem var(--police-texte);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.18s var(--ease), color 0.18s var(--ease), transform 0.18s var(--ease), border-color 0.18s;
+}
+
+.toggle-btn,
+.favorites-toggle {
+  border: 2px solid var(--trait-fond);
+  background: transparent;
+  color: var(--sur-fond);
+}
+.toggle-btn:hover,
+.favorites-toggle:hover { border-color: var(--sur-fond); color: #fff; }
+.toggle-btn.is-active,
+.favorites-toggle.is-active { background: var(--sur-fond); border-color: var(--sur-fond); color: var(--encre); }
+
+.reset-btn {
+  border: 2px solid var(--jaune);
+  background: var(--jaune);
+  color: var(--encre);
+}
+.reset-btn:hover { background: #ffe99a; border-color: #ffe99a; }
+.reset-btn:active, .toggle-btn:active { transform: translateY(2px); }
+.reset-btn:disabled { opacity: 0.55; cursor: wait; }
+
+.toggle-btn.bouton-danger { color: #ffb4a8; border-color: rgba(255, 180, 168, 0.4); }
+.toggle-btn.bouton-danger:hover { background: var(--orange); border-color: var(--orange); color: #fff; }
+
+.petit { min-height: 38px; padding: 0 14px; font-size: 0.85rem; }
+
+.result-count {
+  margin: 20px auto 0;
+  font-family: var(--police-donnees);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--sur-fond-doux);
+}
+
+/* ---------- Grilles ---------- */
+.villager-grid,
+.critter-grid,
+.art-grid {
+  max-width: 1240px;
+  margin: 18px auto 56px;
+  display: grid;
+  gap: 22px;
+  padding: 6px 0 10px;
+}
+.villager-grid { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+.critter-grid  { grid-template-columns: repeat(auto-fill, minmax(214px, 1fr)); }
+.art-grid      { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+
+.species-header {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 26px 0 0;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--jaune);
+}
+.species-header::after { content: ""; flex: 1; border-top: 2px dashed var(--trait-fond); }
+.species-header:first-child { margin-top: 0; }
+
+/* ---------- Billets (fiches) ---------- */
+.villager-card,
+.critter-card,
+.art-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 14px 16px;
+  border-radius: var(--r-billet);
+  background: var(--papier);
+  color: var(--encre);
+  box-shadow: var(--ombre-billet);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.villager-card:hover,
+.critter-card:hover,
+.art-card:hover { transform: translateY(-5px) rotate(-0.4deg); box-shadow: var(--ombre-billet-haut); }
+
+/* Photo : le talon du billet */
+.photo-frame,
+.critter-photo,
+.art-photo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 50% 38%, #fff 0%, rgba(255, 255, 255, 0) 62%),
+    var(--papier-2);
+}
+.photo-frame,
+.critter-photo { aspect-ratio: 1; }
+.art-photo { aspect-ratio: 4 / 5; }
+
+.photo-frame img,
+.critter-photo img {
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 5px rgba(40, 22, 10, 0.22));
+  transition: transform 0.4s var(--ease);
+}
+.villager-card:hover .photo-frame img,
+.critter-card:hover .critter-photo img { transform: scale(1.07) rotate(2deg); }
+.art-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.photo-frame.no-photo,
+.critter-photo.no-photo,
+.art-photo.no-photo { color: var(--encre-douce); }
+.no-photo .icone { width: 42%; height: 42%; stroke-width: 1.4; opacity: 0.7; }
+
+.villager-name,
+.critter-name,
+.art-name {
+  margin: 14px 2px 0;
+  font-family: var(--police-titre);
+  font-weight: 700;
+  font-size: 1.02rem;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  text-transform: capitalize;
+}
+.villager-name-en,
+.critter-name-en {
+  margin: 3px 2px 0;
+  min-height: 1.3em;
+  font-size: 0.8rem;
+  color: var(--encre-douce);
+}
+
+.villager-species {
+  margin: 10px 2px 0;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--encre-douce);
+}
+.villager-personality {
+  margin: 6px 2px 0;
+  align-self: flex-start;
+  padding: 3px 11px;
+  border-radius: var(--r-pilule);
+  background: var(--jaune);
+  color: var(--encre);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.villager-birthday,
+.villager-amiibo,
+.critter-meta {
+  margin: 8px 2px 0;
+  font-size: 0.85rem;
+  color: var(--encre-douce);
+}
+.critter-meta { font-family: var(--police-donnees); font-size: 0.78rem; font-weight: 500; }
+.villager-amiibo { padding: 8px 10px; border-radius: 10px; background: var(--alerte-pale); color: var(--alerte); font-weight: 600; font-size: 0.8rem; }
+.villager-amiibo-examples { font-weight: 500; opacity: 0.85; }
+
+.critter-badge {
+  margin: 10px 2px 0;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px 4px 10px;
+  border-radius: var(--r-pilule);
+  background: var(--papier-3);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.critter-badge.water-river { background: var(--aqua); }
+.critter-badge.water-ocean { background: #6bb6e0; color: #12324f; }
+
+/* « Sur mon île » : le cœur posé sur le talon */
+.favorite-btn {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(244, 250, 246, 0.92);
+  color: var(--encre-douce);
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(40, 22, 10, 0.3);
+  transition: transform 0.25s var(--ease), background 0.2s, color 0.2s;
+}
+.favorite-btn .icone { width: 20px; height: 20px; }
+.favorite-btn:hover:not(:disabled) { transform: scale(1.12); color: var(--orange); }
+.favorite-btn:active:not(:disabled) { transform: scale(0.94); }
+.favorite-btn:disabled { cursor: not-allowed; opacity: 0.6; }
+.villager-card.is-favorite .favorite-btn { background: var(--orange); color: #fff; }
+.villager-card.is-favorite .favorite-btn:hover { color: #fff; }
+
+/* Souche : ligne de déchirure et encoches, puis cases à cocher */
+.critter-checks {
+  position: relative;
+  margin: 16px -14px 0;
+  padding: 16px 14px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+.critter-checks::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 0;
+  border-top: 2px dashed #dcc79a;
+}
+/* Les deux encoches du billet, aux extrémités de la ligne de déchirure */
+.critter-checks::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10px;
+  height: 20px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 0 10px, var(--fond) 10px, transparent 10.5px),
+    radial-gradient(circle at 100% 10px, var(--fond) 10px, transparent 10.5px);
+}
+
+.check-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px 7px 10px;
+  border: 2px solid var(--papier-3);
+  border-radius: var(--r-pilule);
+  background: #fff;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.18s, border-color 0.18s, transform 0.18s var(--ease);
+}
+.check-pill:hover { border-color: var(--encre); }
+.check-pill:active { transform: scale(0.96); }
+
+/* Case : un trou perforé qui se remplit */
+.check-pill input {
+  appearance: none;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border: 2px solid var(--encre);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s;
+}
+.check-pill input::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--encre);
+  border-width: 0 2.4px 2.4px 0;
+  transform: rotate(40deg) scale(0);
+  transition: transform 0.25s var(--ease);
+}
+.check-pill input:checked::after { transform: rotate(40deg) scale(1); }
+.check-pill input:disabled { cursor: not-allowed; }
+.check-pill:has(input:disabled) { opacity: 0.55; cursor: not-allowed; }
+
+.check-pill.is-checked { background: var(--jaune); border-color: var(--jaune-fonce); }
+.check-pill.is-checked input { border-color: var(--encre); }
+.check-pill.museum-pill.is-checked { background: var(--orange); border-color: var(--orange-fonce); color: #fff; }
+.check-pill.museum-pill.is-checked input { border-color: #fff; }
+.check-pill.museum-pill.is-checked input::after { border-color: #fff; }
+
+/* Le tampon « Au musée », signature de l'appli */
+.is-museum .critter-photo::after,
+.art-card.is-museum .art-images::after {
+  content: "Au musée";
+  position: absolute;
+  right: 8%;
+  bottom: 10%;
+  padding: 6px 12px 5px;
+  border: 3px solid var(--orange);
+  border-radius: 8px;
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+  font-family: var(--police-titre);
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: rgba(244, 250, 246, 0.78);
+  mix-blend-mode: multiply;
+  transform: rotate(-11deg);
+  animation: tampon 0.45s var(--ease);
+}
+@keyframes tampon {
+  from { transform: rotate(-11deg) scale(2.2); opacity: 0; }
+  60%  { opacity: 1; }
+  to   { transform: rotate(-11deg) scale(1); }
+}
+
+/* ---------- Cartes d'art : réel / faux ---------- */
+.art-card { padding: 14px; }
+.art-images { position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 10px; }
+.art-image-block { position: relative; }
+.art-image-label {
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  left: 8px;
+  padding: 3px 10px;
+  border-radius: var(--r-pilule);
+  font-family: var(--police-donnees);
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.art-image-label.real { background: var(--encre); color: var(--sur-fond); }
+.art-image-label.fake { background: var(--orange); color: #fff; }
+
+.art-subtitle { margin: 4px 2px 0; font-size: 0.85rem; color: var(--encre-douce); }
+.art-detail,
+.art-badge {
+  margin: 12px 2px 14px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--papier-2);
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+.art-detail .avec-icone { align-items: flex-start; }
+.art-detail .icone { margin-top: 0.12em; }
+.art-badge { display: block; background: #d6f3e4; font-weight: 600; }
+.art-card .museum-pill { align-self: flex-start; margin-top: auto; }
+
+.empty-state {
+  margin: 40px auto;
+  padding: 28px;
+  text-align: center;
+  border: 2px dashed var(--trait-fond);
+  border-radius: var(--r-billet);
+  color: var(--sur-fond-doux);
+}
+
+/* ---------- Accueil : tableau des départs ---------- */
+.feature-grid {
+  max-width: 1240px;
+  margin: 36px auto 64px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 22px;
+}
+
+.feature-card {
+  position: relative;
+  grid-column: span 4;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  padding: 22px 22px 20px;
+  border-radius: var(--r-billet);
+  background: var(--papier);
+  color: var(--encre);
+  text-decoration: none;
+  box-shadow: var(--ombre-billet);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.feature-card:hover { transform: translateY(-6px) rotate(-0.6deg); box-shadow: var(--ombre-billet-haut); color: var(--encre); }
+.feature-card:nth-child(even):hover { transform: translateY(-6px) rotate(0.6deg); }
+
+/* Le grand billet : les habitants */
+.feature-card--habitants { grid-column: span 6; grid-row: span 2; padding: 30px 30px 26px; background: var(--jaune); }
+.feature-grid .feature-card--habitants p { font-size: 1.05rem; max-width: 36ch; }
+.feature-grid .feature-card--habitants h2 { font-size: clamp(1.8rem, 3.4vw, 2.7rem); }
+.feature-card--habitants { grid-template-rows: 1fr auto auto; min-height: 460px; overflow: hidden; }
+.feature-card--habitants::before {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: var(--papier);
+  opacity: 0.55;
+}
+.feature-card-portrait {
+  position: absolute;
+  right: 26px;
+  top: 14px;
+  width: min(44%, 230px);
+  height: auto;
+  border: 7px solid var(--papier);
+  border-bottom-width: 22px;
+  border-radius: 6px;
+  box-shadow: 0 16px 22px -8px rgba(40, 22, 10, 0.5);
+  transform: rotate(5deg);
+  transition: transform 0.5s var(--ease);
+}
+.feature-card--habitants:hover .feature-card-portrait { transform: rotate(-2deg) scale(1.05); }
+.feature-grid .feature-card--habitants h2 { align-self: end; margin-top: 0; }
+.feature-card--poissons, .feature-card--creatures { grid-column: span 3; }
+.feature-card--insectes { grid-column: span 3; }
+.feature-card--art { grid-column: span 3; }
+
+.feature-card-icon {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--papier-2);
+  transform: rotate(-6deg);
+  transition: transform 0.45s var(--ease);
+}
+.feature-card:hover .feature-card-icon { transform: rotate(8deg) scale(1.06); }
+.feature-card-icon img { width: 84%; height: 84%; object-fit: contain; filter: drop-shadow(0 4px 4px rgba(40, 22, 10, 0.25)); }
+.feature-card-icon.icon-poissons { background: var(--aqua); }
+.feature-card-icon.icon-creatures { background: var(--rose); }
+.feature-card-icon.icon-insectes { background: var(--menthe); }
+.feature-card-icon.icon-art { background: #ffd9a6; }
+
+.feature-card h2 {
+  margin: 22px 0 0;
+  font-family: var(--police-titre);
+  font-weight: 800;
+  font-size: 1.3rem;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+.feature-card p { margin: 10px 0 0; font-size: 0.92rem; line-height: 1.5; }
+
+.feature-card-pied {
+  margin-top: 22px;
+  padding-top: 14px;
+  border-top: 2px dashed rgba(40, 22, 10, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.feature-card-qte { font-family: var(--police-donnees); font-size: 0.8rem; font-weight: 500; }
+.feature-card-qte b { font-weight: 700; font-size: 1.05rem; }
+.feature-card-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--r-pilule);
+  background: var(--encre);
+  color: var(--sur-fond);
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition: background 0.2s, color 0.2s, gap 0.3s var(--ease);
+}
+.feature-card-arrow i { font-style: normal; }
+.feature-card:hover .feature-card-arrow { gap: 12px; background: var(--orange); color: #fff; }
+.feature-card--habitants .feature-card-arrow { background: var(--encre); }
+
+@media (max-width: 980px) {
+  .feature-card--habitants { grid-column: span 12; grid-row: auto; min-height: 380px; }
+  .feature-card--poissons, .feature-card--creatures, .feature-card--insectes, .feature-card--art { grid-column: span 6; }
+}
+@media (max-width: 560px) {
+  .feature-card--habitants { min-height: 500px; }
+  .feature-card--habitants::before { width: 250px; height: 250px; right: -50px; top: -50px; }
+  .feature-card-portrait { width: 150px; right: 18px; top: 16px; }
+  .feature-card--poissons, .feature-card--creatures, .feature-card--insectes, .feature-card--art { grid-column: span 12; }
+}
+
+/* ---------- Panneaux (profil, amis) ---------- */
+.panneau {
+  position: relative;
+  max-width: 1240px;
+  margin: 26px auto 0;
+  padding: 26px 28px 28px;
+  border-radius: var(--r-billet);
+  background: var(--papier);
+  color: var(--encre);
+  box-shadow: var(--ombre-billet);
+}
+.panneau h2 {
+  margin: 0;
+  font-family: var(--police-titre);
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+}
+.panneau-aide { margin: 6px 0 18px; max-width: 64ch; font-size: 0.92rem; color: var(--encre-douce); }
+.panneau h2 + div, .panneau h2 + form { margin-top: 18px; }
+.panneau-vide { margin: 4px 0 0; color: var(--encre-douce); font-style: italic; }
+.panneau a { color: var(--encre); font-weight: 700; text-decoration-color: var(--orange); }
+.panneau a:hover { color: var(--orange-fonce); }
+
+/* Avancement : jauges façon carte de fidélité */
+.stat-ligne { padding: 12px 0; display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; align-items: center; }
+.stat-ligne + .stat-ligne { border-top: 2px dashed var(--papier-3); }
+.stat-entete { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; font-weight: 700; }
+.stat-chiffres { font-family: var(--police-donnees); font-weight: 500; font-size: 0.82rem; color: var(--encre-douce); }
+
+.jauge {
+  height: 22px;
+  border-radius: var(--r-pilule);
+  background: var(--papier-3);
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(40, 22, 10, 0.25);
+}
+.jauge-remplissage {
+  height: 100%;
+  min-width: 4px;
+  border-radius: var(--r-pilule);
+  background: repeating-linear-gradient(115deg, var(--jaune) 0 12px, #ffe99a 12px 24px);
+  box-shadow: inset 0 -3px 0 rgba(224, 168, 0, 0.6);
+  transform-origin: left;
+  animation: remplir 0.9s var(--ease) both;
+}
+@keyframes remplir { from { transform: scaleX(0); } }
+.jauge-valeur { font-family: var(--police-donnees); font-weight: 700; font-size: 0.95rem; min-width: 5ch; text-align: right; }
+
+.choix-visibilite { display: flex; flex-wrap: wrap; gap: 10px; }
+.choix-visibilite label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 18px;
+  border: 2px solid var(--papier-3);
+  border-radius: var(--r-pilule);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s;
+}
+.choix-visibilite label:hover { border-color: var(--encre); }
+.choix-visibilite label:has(input:checked) { background: var(--jaune); border-color: var(--jaune-fonce); }
+.choix-visibilite input { accent-color: var(--encre); width: 17px; height: 17px; margin: 0; }
+
+/* Classement */
+.tableau { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.tableau th {
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--encre-douce);
+  border-bottom: 2px solid var(--encre);
+}
+.tableau td { padding: 12px; border-bottom: 2px dashed var(--papier-3); font-family: var(--police-donnees); font-size: 0.9rem; font-weight: 500; }
+.tableau td a { font-family: var(--police-texte); font-size: 1rem; }
+.tableau tr:last-child td { border-bottom: 0; }
+.tableau td:first-child { width: 3.2em; font-weight: 700; color: var(--encre-douce); }
+.tableau tbody tr:nth-child(-n+3) td:first-child { color: var(--encre); font-family: var(--police-titre); font-weight: 800; font-size: 1.05rem; }
+.tableau tbody tr:nth-child(1) td:first-child { color: var(--jaune-fonce); }
+.tableau tbody tr:nth-child(2) td:first-child { color: #6f8f8c; }
+.tableau tbody tr:nth-child(3) td:first-child { color: #b46a37; }
+.tableau tr.est-moi { background: #fff6d6; }
+.tableau tr.est-moi td:first-child { border-radius: 10px 0 0 10px; }
+.tableau tr.est-moi td:last-child { border-radius: 0 10px 10px 0; }
+
+/* Fil d'actu */
+.fil { margin: 0; padding: 0; list-style: none; }
+.fil-ligne { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; padding: 12px 0; }
+.fil-ligne + .fil-ligne { border-top: 2px dashed var(--papier-3); }
+.fil-icone {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--jaune);
+  color: var(--encre);
+}
+.fil-icone .icone { width: 20px; height: 20px; }
+.fil-texte { margin: 0; }
+.fil-texte em { font-style: normal; font-weight: 700; text-transform: capitalize; box-shadow: inset 0 -0.45em 0 rgba(255, 224, 122, 0.55); }
+.fil-date { font-family: var(--police-donnees); font-size: 0.76rem; font-weight: 500; color: var(--encre-douce); white-space: nowrap; }
+@media (max-width: 560px) { .fil-ligne { grid-template-columns: auto 1fr; } .fil-date { grid-column: 2; } }
+
+/* Amis */
+.recherche-amis { display: flex; gap: 10px; flex-wrap: wrap; }
+.recherche-amis input { flex: 1 1 240px; background: var(--papier-2); }
+
+.joueur-ligne { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px 16px; padding: 12px 0; }
+.joueur-ligne + .joueur-ligne { border-top: 2px dashed var(--papier-3); }
+.joueur-nom { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.05rem; text-decoration: none; }
+.joueur-nom .icone { padding: 7px; box-sizing: content-box; width: 18px; height: 18px; border-radius: 50%; background: var(--papier-3); }
+.joueur-nom:hover { color: var(--orange-fonce); }
+.joueur-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+/* boutons sur papier : contrastes inversés */
+.panneau .toggle-btn { border-color: var(--papier-3); color: var(--encre); }
+.panneau .toggle-btn:hover { border-color: var(--encre); color: var(--encre); }
+.panneau .toggle-btn.bouton-danger { color: var(--alerte); border-color: #f1bdb8; }
+.panneau .toggle-btn.bouton-danger:hover { background: var(--alerte); border-color: var(--alerte); color: #fff; }
+.etiquette {
+  padding: 4px 12px;
+  border-radius: var(--r-pilule);
+  background: var(--papier-3);
+  font-family: var(--police-donnees);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- Formulaires : le guichet ---------- */
+.formulaire {
+  position: relative;
+  max-width: 480px !important;
+  margin: 28px auto 0;
+  padding: 30px 28px 26px;
+  border-radius: var(--r-billet);
+  background: var(--papier);
+  color: var(--encre);
+  box-shadow: var(--ombre-billet);
+}
+.formulaire > * + * { margin-top: 18px; }
+.champ { display: flex; flex-direction: column; gap: 7px; }
+.champ label { font-weight: 700; font-size: 0.9rem; }
+.champ input { background: var(--papier-2); }
+.champ input:focus { background: #fff; border-color: var(--encre); box-shadow: 0 0 0 4px rgba(255, 224, 122, 0.55); }
+.champ-aide { margin: 0; font-size: 0.85rem; color: var(--encre-douce); }
+.champ-aide a, .formulaire-pied a, .formulaire-succes a { color: var(--encre); font-weight: 700; text-decoration-color: var(--orange); }
+.formulaire-envoi { width: 100%; min-height: 54px; font-size: 1.02rem; }
+.formulaire-erreur,
+.formulaire-succes { margin: 0; padding: 12px 14px; border-radius: 10px; font-weight: 600; font-size: 0.92rem; }
+.formulaire-erreur { background: var(--alerte-pale); color: var(--alerte); }
+.formulaire-succes { background: #d6f3e4; color: #0b4a35; }
+.formulaire-pied { margin: 22px 0 0; padding-top: 18px; border-top: 2px dashed var(--papier-3); text-align: center; font-size: 0.92rem; color: var(--encre-douce); }
+[hidden] { display: none !important; }
+
+/* ---------- Pied de page ---------- */
+.site-footer {
+  max-width: 1240px;
+  margin: 24px auto 0;
+  padding: 26px 20px 48px;
+  border-top: 2px dashed var(--trait-fond);
+  font-size: 0.86rem;
+  color: var(--sur-fond-doux);
+}
+.site-footer p { margin: 0; max-width: 78ch; }
+.footer-sub { margin-top: 6px !important; opacity: 0.8; }
+
+/* ---------- Retour en haut ---------- */
+.back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 60;
+  width: 50px;
+  height: 50px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--jaune);
+  color: var(--encre);
+  font: 800 1.3rem var(--police-titre);
+  cursor: pointer;
+  box-shadow: 0 10px 18px -6px rgba(25, 12, 5, 0.6);
+  opacity: 0;
+  transform: translateY(16px) scale(0.8);
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.35s var(--ease), background 0.2s;
+}
+.back-to-top.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+.back-to-top:hover { background: #ffe99a; }
+
+/* ---------- Petits écrans ---------- */
+@media (max-width: 640px) {
+  .site-header { padding-top: 36px; }
+  .villager-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .critter-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .villager-card, .critter-card { padding: 10px 10px 12px; }
+  .villager-name, .critter-name { font-size: 0.9rem; }
+  .critter-checks { margin: 14px -10px 0; padding: 14px 10px 0; }
+  .critter-checks::before { left: 10px; right: 10px; }
+  .favorite-btn { top: 16px; right: 16px; width: 34px; height: 34px; }
+  .controls { gap: 10px; }
+  .select-wrap { flex: 1 1 140px; }
+  .toggle-btn, .favorites-toggle, .reset-btn { flex: 1 1 auto; padding: 0 14px; font-size: 0.88rem; }
+  input::placeholder { font-size: 0.92rem; }
+  .panneau { padding: 20px 18px 22px; }
+  .tableau td, .tableau th { padding: 10px 6px; }
+}
+@media (max-width: 420px) {
+  .critter-grid, .villager-grid { grid-template-columns: 1fr 1fr; }
+  .check-pill { padding: 6px 10px 6px 8px; font-size: 0.78rem; }
+}
+
+/* ============================================================
+   Photos de profil, profil, comparaison, chargement
+   ============================================================ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Pastille ronde : photo de l'habitant choisi, ou initiale du pseudo */
+.avatar {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--jaune);
+  color: var(--encre);
+  font: 800 0.95rem var(--police-titre);
+  vertical-align: middle;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; background: var(--papier-2); }
+.avatar--petit { width: 26px; height: 26px; font-size: 0.72rem; }
+.avatar--grand { width: 88px; height: 88px; font-size: 2rem; box-shadow: 0 0 0 4px var(--papier), 0 10px 18px -6px rgba(25, 12, 5, 0.5); }
+.top-nav-pseudo .avatar { box-shadow: 0 0 0 2px var(--jaune); }
+.joueur-nom .avatar, .fil-icone .avatar { background: var(--jaune); }
+.tableau .joueur-nom { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.fil-icone { overflow: hidden; padding: 0; }
+.fil-icone .avatar { width: 100%; height: 100%; }
+
+/* En-tête de profil et de comparaison */
+.profil-entete { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.profil-entete-texte { flex: 1 1 280px; min-width: 0; }
+.profil-entete .site-header h1, .profil-entete h1 { max-width: none; }
+.profil-actions { margin-left: auto; }
+.comparer-avatars { display: inline-flex; }
+.comparer-avatars .avatar + .avatar { margin-left: -22px; }
+
+/* Choix de la photo */
+.avatar-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.avatar-selecteur { margin-top: 16px; }
+.avatar-selecteur input[type="search"] { background: var(--papier-2); margin-bottom: 12px; }
+.avatar-grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(58px, 1fr));
+  gap: 8px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 4px;
+}
+.avatar-choix {
+  appearance: none;
+  aspect-ratio: 1;
+  padding: 3px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: var(--papier-2);
+  cursor: pointer;
+  transition: transform 0.2s var(--ease), border-color 0.2s;
+}
+.avatar-choix:hover { transform: scale(1.1); border-color: var(--encre); }
+.avatar-choix img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block; }
+
+/* Badges */
+.badges { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.badge-carte {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 2px dashed var(--papier-3);
+  border-radius: 14px;
+  color: var(--encre-douce);
+}
+.badge-carte strong { display: block; font-size: 0.95rem; }
+.badge-carte small { display: block; font-size: 0.78rem; }
+.badge-icone {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--papier-2);
+}
+.badge-carte.is-obtenu { border: 2px solid var(--jaune-fonce); background: #fff6d6; color: var(--encre); }
+.badge-carte.is-obtenu .badge-icone { background: var(--jaune); }
+
+/* Vignettes : dernières trouvailles et comparaison */
+.vignettes { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 10px; }
+.vignette {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 4px;
+  border-radius: 12px;
+  background: var(--papier-2);
+  text-align: center;
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.vignette img { width: 48px; height: 48px; object-fit: contain; }
+.vignette .icone { width: 40px; height: 40px; opacity: 0.6; }
+.vignette span { overflow-wrap: anywhere; }
+.vignette.is-musee { box-shadow: inset 0 0 0 2px var(--orange); }
+
+/* Classement et records */
+.classement-filtre { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+.classement-filtre label { font-weight: 700; font-size: 0.9rem; }
+.classement-filtre select { min-height: 42px; padding: 0 36px 0 14px; border-radius: 10px; border: 2px solid var(--papier-3); background-color: #fff; font: 500 0.95rem var(--police-texte); color: var(--encre); }
+.records { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+.record h3 { margin: 0 0 8px; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--encre-douce); }
+.record ol { margin: 0; padding: 0; list-style: none; }
+.record li { display: flex; align-items: center; gap: 10px; padding: 7px 0; }
+.record li + li { border-top: 2px dashed var(--papier-3); }
+.record img { width: 34px; height: 34px; object-fit: contain; }
+.record li span { font-weight: 700; text-transform: capitalize; }
+.record small { margin-left: auto; font-family: var(--police-donnees); font-size: 0.75rem; color: var(--encre-douce); }
+.record-champion { display: flex; align-items: center; gap: 10px; margin: 18px 0 0; padding-top: 14px; border-top: 2px dashed var(--papier-3); font-weight: 600; }
+
+/* Comparaison : trois colonnes */
+.comparer-colonnes { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; align-items: start; }
+.comparer-colonnes .panneau { margin: 26px 0 0; width: 100%; max-width: none; }
+@media (max-width: 960px) { .comparer-colonnes { grid-template-columns: minmax(0, 1fr); gap: 0; } }
+
+/* Chargement : cartes fantômes qui respirent */
+.squelette {
+  min-height: 260px;
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0.1) 30%, rgba(255, 255, 255, 0.26) 50%, rgba(255, 255, 255, 0.1) 70%) 0 0 / 220% 100%, rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+  animation: squelette 1.3s linear infinite;
+  pointer-events: none;
+}
+.squelette:hover { transform: none; box-shadow: none; }
+@keyframes squelette { to { background-position: -120% 0; } }
+@media (prefers-reduced-motion: reduce) { .squelette { animation: none; } }
+
+/* Lien d'évitement : visible seulement au clavier */
+.lien-evitement {
+  position: fixed;
+  left: 12px;
+  top: -80px;
+  z-index: 300;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: var(--jaune);
+  color: var(--encre);
+  font-weight: 800;
+  text-decoration: none;
+  transition: top 0.2s var(--ease);
+}
+.lien-evitement:focus { top: 12px; }
+main:focus { outline: none; }
+
+/* Pastille de notifications */
+.top-nav-notif { position: relative; display: inline-grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; color: var(--jaune); }
+.top-nav-notif[hidden] { display: none; }
+.badge-compteur { position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 99px; background: var(--orange); color: #fff; font: 700 0.7rem/18px var(--police-donnees); text-align: center; }
+
+/* Progression : une barre par jour */
+.progression-resume { margin: 0 0 12px; font-weight: 600; }
+.progression { display: flex; align-items: flex-end; gap: 3px; height: 110px; padding: 6px 0 0; border-bottom: 2px solid var(--encre); }
+.progression-barre { flex: 1; min-width: 4px; border-radius: 4px 4px 0 0; background: var(--jaune-fonce); }
+.progression-barre:hover { background: var(--orange); }
