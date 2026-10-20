@@ -1,0 +1,6 @@
+docs
+tests
+tools
+.git
+*.md
+**/.DS_Store
