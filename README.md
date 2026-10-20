@@ -18,7 +18,7 @@ Projet final **Bases de données relationnelles et non relationnelles** — Mast
 **Prérequis** : Docker (Docker Desktop, ou Docker Engine avec le plugin Compose). Rien d'autre : ni PHP, ni PostgreSQL, ni Redis à installer.
 
 ```bash
-git clone <url-du-depot> nook-manager
+git clone https://github.com/martmtln3347/M1-BDD-APP-COURS.git nook-manager
 cd nook-manager/docker
 docker compose up -d --build
 ```
