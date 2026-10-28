@@ -58,7 +58,7 @@ HTML;
 </main>
 
 <footer class="site-footer">
-  <p>Données extraites du jeu Animal Crossing: New Horizons, hémisphère nord — <span id="footer-count">40</span> créatures au total, toutes incluses. Liste inchangée depuis la version 2.0, vérifiée à jour avec la version 3.0.</p>
+  <p>Données extraites du jeu Animal Crossing: New Horizons, hémisphère nord — <span id="footer-count">40</span> créatures au total, toutes incluses. Liste inchangée depuis la version&nbsp;2.0, vérifiée à jour avec la version&nbsp;3.0.</p>
   <p class="footer-sub">Fan-site non officiel — Animal Crossing est une marque de Nintendo.</p>
 </footer>
 

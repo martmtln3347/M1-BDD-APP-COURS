@@ -113,7 +113,8 @@
       bouton.addEventListener("click", function () {
         bouton.disabled = true;
         Nook.deconnexion().then(function () {
-          window.location.reload();
+          try { sessionStorage.removeItem("nook-ouvert"); } catch (e) { /* ignore */ }
+          window.location.href = "?page=accueil";
         });
       });
 

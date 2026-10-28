@@ -26,6 +26,7 @@ $scripts = <<<'HTML'
       document.getElementById("mot-de-passe").value
     )
       .then(function () {
+        try { sessionStorage.removeItem("nook-ouvert"); } catch (e) { /* ignore */ }
         window.location.href = "?page=accueil";
       })
       .catch(function (err) {

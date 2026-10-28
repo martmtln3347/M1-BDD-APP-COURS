@@ -14,8 +14,8 @@
   };
 
   var PERSONALITY_FR = {
-    "Lazy": "Cool", "Jock": "Sportif", "Cranky": "Ronchon", "Snooty": "Chic",
-    "Normal": "Normal", "Peppy": "Enjoué", "Smug": "Charmeur", "Big Sister": "Costaud"
+    "Lazy": "Cool", "Jock": "Sportif(ve)", "Cranky": "Ronchon", "Snooty": "Chic",
+    "Normal": "Normal", "Peppy": "Enjoué(e)", "Smug": "Charmeur(se)", "Big Sister": "Costaud(e)"
   };
 
   var SPECIES_ICONE = "patte";

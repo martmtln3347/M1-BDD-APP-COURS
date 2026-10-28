@@ -120,13 +120,13 @@ h1, h2, h3 { text-wrap: balance; }
 }
 
 .top-nav-inner {
-  max-width: 1280px;
+  max-width: 1560px;
   margin: 0 auto;
   min-height: var(--hauteur-nav);
   padding: 0 20px;
   display: flex;
   align-items: center;
-  gap: 8px 26px;
+  gap: 8px 28px;
 }
 
 .top-nav-brand {
@@ -184,7 +184,7 @@ h1, h2, h3 { text-wrap: balance; }
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
   flex: none;
 }
 
@@ -213,11 +213,112 @@ h1, h2, h3 { text-wrap: balance; }
 .top-nav-bouton:hover { background: var(--jaune); color: var(--encre); }
 .top-nav-bouton:disabled { opacity: 0.5; cursor: wait; }
 
-@media (max-width: 1120px) {
-  .top-nav-inner { flex-wrap: wrap; padding: 10px 16px; gap: 6px 12px; }
+/* Connecte, la barre porte marque + 8 liens + pseudo + 2 boutons : elle ne tient
+   sur une ligne que tres large. En dessous, les liens passent sur une 2e ligne. */
+@media (max-width: 1560px) {
+  .top-nav-inner { flex-wrap: wrap; padding: 10px 20px; gap: 6px 14px; }
   .top-nav-compte { order: 2; }
-  .top-nav-links { order: 3; flex-basis: 100%; margin: 0 -4px; }
-  .top-nav-brand { font-size: 0.95rem; }
+  .top-nav-links { order: 3; flex-basis: 100%; margin: 0 -4px; gap: 4px; }
+}
+/* ---------- Menu burger : petits ecrans ---------- */
+.top-nav-burger { display: none; }
+
+@media (max-width: 900px) {
+  .top-nav-inner {
+    min-height: 0;
+    padding: 8px 16px;
+    gap: 0 12px;
+    align-items: center;
+  }
+  .top-nav-brand { order: 1; margin-right: auto; font-size: 1rem; }
+
+  .top-nav-burger {
+    order: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    border: 2px solid var(--jaune);
+    border-radius: 14px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s var(--ease);
+  }
+  .top-nav-burger:hover,
+  .top-nav.is-ouvert .top-nav-burger { background: rgba(255, 224, 122, 0.16); }
+
+  /* Trois barres qui se rejoignent en croix a l'ouverture. */
+  .burger-barres,
+  .burger-barres::before,
+  .burger-barres::after {
+    display: block;
+    width: 20px;
+    height: 2.5px;
+    border-radius: 2px;
+    background: var(--jaune);
+    transition: transform 0.28s var(--ease), background 0.2s;
+  }
+  .burger-barres { position: relative; }
+  .burger-barres::before,
+  .burger-barres::after { content: ""; position: absolute; left: 0; }
+  .burger-barres::before { top: -7px; }
+  .burger-barres::after { top: 7px; }
+  .top-nav.is-ouvert .burger-barres { background: transparent; }
+  .top-nav.is-ouvert .burger-barres::before { transform: translateY(7px) rotate(45deg); }
+  .top-nav.is-ouvert .burger-barres::after { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Le panneau : liens en colonne, puis le compte. Ferme par defaut. */
+  .top-nav-links,
+  .top-nav-compte { display: none; flex-basis: 100%; }
+  .top-nav.is-ouvert .top-nav-inner { max-height: 100vh; max-height: 100dvh; overflow-y: auto; }
+  .top-nav.is-ouvert .top-nav-links {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 3px;
+    margin: 10px 0 0;
+    padding-top: 10px;
+    border-top: 2px dashed rgba(255, 224, 122, 0.35);
+    overflow: visible;
+    animation: menu-ouvre 0.26s var(--ease) both;
+  }
+  .top-nav.is-ouvert .top-nav-link {
+    padding: 13px 16px;
+    border-radius: 14px;
+    font-size: 1.05rem;
+  }
+  .top-nav.is-ouvert .top-nav-compte {
+    order: 4;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0 0;
+    padding: 12px 0 14px;
+    border-top: 2px dashed rgba(255, 224, 122, 0.35);
+    animation: menu-ouvre 0.3s var(--ease) both;
+  }
+  .top-nav.is-ouvert .top-nav-pseudo { flex-basis: 100%; font-size: 0.95rem; }
+  .top-nav.is-ouvert .top-nav-bouton { flex: 1 1 130px; text-align: center; padding: 11px 16px; }
+}
+@keyframes menu-ouvre {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: none; }
+}
+body.menu-ouvert { overflow: hidden; }
+body.menu-ouvert::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(20, 10, 4, 0.55);
+}
+@media (prefers-reduced-motion: reduce) {
+  .top-nav.is-ouvert .top-nav-links,
+  .top-nav.is-ouvert .top-nav-compte { animation: none; }
 }
 
 /* ---------- En-tête de page ---------- */
@@ -1090,6 +1191,350 @@ input:focus, select:focus { outline: none; border-color: var(--jaune); box-shado
   .critter-grid, .villager-grid { grid-template-columns: 1fr 1fr; }
   .check-pill { padding: 6px 10px 6px 8px; font-size: 0.78rem; }
 }
+
+/* ============================================================
+   Écran d'arrivée : le passeport
+   ============================================================ */
+body:has(.passeport) { overflow: hidden; }
+
+.passeport {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  overflow: hidden;
+  background-color: var(--fond-profond);
+}
+
+.passeport-scene { perspective: 1800px; }
+
+.passeport-livre {
+  --larg: min(440px, 86vw, 66vh);
+  position: relative;
+  width: var(--larg);
+  aspect-ratio: 5 / 7;
+  transform-style: preserve-3d;
+  transition: transform 1.1s cubic-bezier(0.65, 0, 0.25, 1);
+  animation: passeport-arrivee 1s var(--ease) backwards;
+  filter: drop-shadow(0 30px 28px rgba(0, 0, 0, 0.45));
+}
+@keyframes passeport-arrivee {
+  from { opacity: 0; transform: translateY(70px) rotate(-5deg) scale(0.9); }
+  to   { opacity: 1; transform: none; }
+}
+
+.passeport-couverture {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 1.1s cubic-bezier(0.65, 0, 0.25, 1);
+}
+
+.passeport-face,
+.passeport-dos {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 6px 16px 16px 6px;
+}
+
+.passeport-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 36px 36px;
+  text-align: center;
+  color: var(--jaune);
+  background:
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1.2px) 0 0 / 5px 5px,
+    linear-gradient(135deg, #a06a3d 0%, #75492a 55%, #4e2f1b 100%);
+  box-shadow: inset 12px 0 14px -8px rgba(0, 0, 0, 0.45), inset -2px 0 0 rgba(255, 255, 255, 0.12);
+}
+/* Couture dorée tout autour */
+.passeport-face::before {
+  content: "";
+  position: absolute;
+  inset: 12px 12px 12px 18px;
+  border: 2px dashed rgba(255, 224, 122, 0.45);
+  border-radius: 4px 11px 11px 4px;
+  pointer-events: none;
+}
+
+.passeport-logo {
+  width: 92px;
+  height: 92px;
+  padding: 21px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: var(--papier);
+  object-fit: contain;
+  transform: rotate(-12deg);
+  box-shadow: 0 0 0 5px rgba(255, 224, 122, 0.25);
+}
+.passeport-titre {
+  margin: 26px 0 0;
+  font-family: var(--police-titre);
+  font-weight: 800;
+  font-size: 2.1rem;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 0 rgba(25, 12, 5, 0.45);
+}
+.passeport-sous-titre {
+  margin: 10px 0 0;
+  font-family: var(--police-donnees);
+  font-weight: 700;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sur-fond-doux);
+}
+.passeport-salut {
+  margin: 18px 0 0;
+  min-height: 1.5em;
+  font-weight: 700;
+  color: var(--sur-fond);
+}
+
+.passeport-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  transition: opacity 0.4s;
+}
+.passeport:not(.is-pret) .passeport-actions { opacity: 0; pointer-events: none; }
+
+.passeport-bouton {
+  appearance: none;
+  display: block;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+  padding: 8px 14px;
+  border: 2px solid var(--jaune);
+  border-radius: var(--r-pilule);
+  font: 700 0.86rem var(--police-texte);
+  text-align: center;
+  text-decoration: none;
+  color: var(--jaune);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.passeport-bouton:hover { background: var(--jaune); color: var(--encre); transform: translateY(-2px); }
+.passeport-bouton--plein { background: var(--jaune); color: var(--encre); }
+.passeport-bouton--plein:hover { background: #ffe99a; border-color: #ffe99a; }
+
+.passeport-lien {
+  appearance: none;
+  margin-top: 4px;
+  padding: 8px;
+  border: 0;
+  background: none;
+  font: 600 0.82rem var(--police-texte);
+  color: var(--sur-fond-doux);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+}
+.passeport-lien:hover { color: #fff; }
+
+/* Zone d'action : boutons ou champs, qui se remplacent en fondu */
+.passeport-zone {
+  margin-top: auto;
+  width: 76%;
+}
+.passeport-vue {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+.passeport-vue.is-actif { opacity: 1; }
+
+.passeport-vue .champ { gap: 5px; text-align: left; }
+.passeport-vue .champ label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sur-fond-doux);
+}
+.passeport-vue .champ input {
+  min-height: 42px;
+  padding: 0 14px;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  background: var(--papier);
+}
+.passeport-vue .champ input::placeholder { color: #7d5f42; }
+.passeport-vue .champ input:focus { background: #fff; border-color: var(--jaune); box-shadow: 0 0 0 3px rgba(255, 224, 122, 0.4); }
+.passeport-champs { display: flex; flex-direction: column; gap: 10px; }
+.passeport-champs[hidden] { display: none; }
+.passeport-vue .passeport-bouton { margin-top: 4px; }
+
+.passeport-erreur,
+.passeport-succes {
+  margin: 0;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-align: left;
+}
+.passeport-erreur { background: var(--alerte-pale); color: var(--alerte); }
+.passeport-succes { background: #d6f3e4; color: #0b4a35; }
+.passeport-succes a { color: var(--encre); font-weight: 700; }
+
+/* Inscription : trois champs, l'en-tête se compacte pour leur faire de la place */
+.passeport-logo { transition: width 0.3s var(--ease), height 0.3s var(--ease), padding 0.3s var(--ease); }
+.passeport-titre { transition: font-size 0.3s var(--ease), margin 0.3s var(--ease); }
+.passeport[data-vue="inscription"] .passeport-logo { width: 54px; height: 54px; padding: 13px; }
+.passeport[data-vue="inscription"] .passeport-titre { margin-top: 14px; font-size: 1.35rem; }
+.passeport[data-vue="inscription"] .passeport-sous-titre { display: none; }
+
+/* Intérieur de la couverture, visible une fois ouverte */
+.passeport-dos {
+  transform: rotateY(180deg);
+  background:
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(40, 22, 10, 0.1) 31px 32px),
+    var(--papier-3);
+  border-radius: 16px 6px 6px 16px;
+  box-shadow: inset -10px 0 14px -8px rgba(40, 22, 10, 0.35);
+}
+
+/* Première page : le visa d'entrée */
+.passeport-page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 30px;
+  border-radius: 6px 16px 16px 6px;
+  /* Cachée tant que le passeport est fermé : ses coins dépasseraient de la couverture */
+  opacity: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(40, 22, 10, 0.08) 31px 32px),
+    var(--papier);
+  color: var(--encre);
+  box-shadow: inset 10px 0 14px -8px rgba(40, 22, 10, 0.3);
+}
+.passeport-page-titre {
+  margin: 0;
+  font-family: var(--police-donnees);
+  font-weight: 700;
+  font-size: 0.76rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--encre-douce);
+}
+.passeport-page-nom {
+  margin: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-family: var(--police-titre);
+  font-weight: 800;
+  font-size: 1.7rem;
+  letter-spacing: -0.03em;
+  text-transform: capitalize;
+}
+.passeport-page-tampon {
+  display: block;
+  width: min(150px, 38%);
+  aspect-ratio: 1;
+  margin-top: 6px;
+  color: var(--orange);
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transform: rotate(-9deg) scale(2.4);
+}
+.passeport-page-tampon svg { display: block; width: 100%; height: 100%; overflow: visible; }
+
+/* Ouverture : la couverture pivote, le livre se recentre, puis l'écran se retire */
+.passeport.is-opening .passeport-livre { transform: translateX(50%); }
+.passeport.is-opening .passeport-page { opacity: 1; transition: opacity 0.1s 0.15s; }
+.passeport.is-opening .passeport-couverture { transform: rotateY(-180deg); }
+.passeport.is-opening .passeport-page-tampon {
+  animation: passeport-tampon 0.45s var(--ease) 1s forwards;
+}
+.passeport.is-opening {
+  animation: passeport-sortie 0.75s cubic-bezier(0.55, 0, 0.9, 0.4) 1.5s forwards;
+}
+@keyframes passeport-tampon {
+  to { opacity: 1; transform: rotate(-9deg) scale(1); }
+}
+@keyframes passeport-sortie {
+  to { opacity: 0; transform: scale(1.35); visibility: hidden; }
+}
+
+@media (max-width: 480px) {
+  .passeport-face { padding: 36px 22px 28px; }
+  .passeport-titre { font-size: 1.6rem; }
+  .passeport-logo { width: 72px; height: 72px; padding: 16px; }
+  .passeport-zone { width: 88%; }
+  .passeport-vue, .passeport-champs { gap: 7px; }
+  .passeport-vue .champ { gap: 3px; }
+  .passeport-vue .champ input { min-height: 38px; }
+  .passeport.is-formulaire .passeport-face { padding-top: 26px; padding-bottom: 20px; }
+  .passeport.is-formulaire .passeport-logo { width: 54px; height: 54px; padding: 13px; }
+  .passeport.is-formulaire .passeport-titre { margin-top: 14px; font-size: 1.35rem; }
+  .passeport.is-formulaire .passeport-sous-titre { display: none; }
+  .passeport-bouton { padding: 7px 14px; }
+}
+/* Telephone : le passeport est reduit et s'ouvre sur place. Sur grand ecran, la
+   couverture pivote et le livre glisse pour centrer la double page ; ici elle
+   ne tiendrait pas dans la largeur. */
+@media (max-width: 700px) {
+  .passeport { padding: 12px; }
+  .passeport-livre { --larg: min(290px, 74vw, 54vh); }
+  .passeport.is-opening .passeport-livre { transform: none; }
+  /* Le formulaire d'inscription a 4 champs : le livre s'allonge pour les contenir. */
+  .passeport-livre { transition: transform 1.1s cubic-bezier(0.65, 0, 0.25, 1), aspect-ratio 0.35s var(--ease); }
+  .passeport[data-vue="inscription"] .passeport-livre { aspect-ratio: 5 / 8.8; }
+  .passeport-face { padding: calc(var(--larg) * 0.12) calc(var(--larg) * 0.08) calc(var(--larg) * 0.09); }
+  .passeport-logo { width: calc(var(--larg) * 0.25); height: calc(var(--larg) * 0.25); padding: calc(var(--larg) * 0.055); }
+  .passeport-titre { margin-top: calc(var(--larg) * 0.05); font-size: calc(var(--larg) * 0.075); }
+  .passeport-sous-titre { font-size: 0.62rem; letter-spacing: 0.16em; }
+  .passeport-bouton { padding: 8px 12px; font-size: 0.82rem; }
+  .passeport-lien { font-size: 0.78rem; }
+  .passeport-zone { width: 90%; }
+  .passeport-vue .champ label { font-size: 0.66rem; }
+  .passeport-vue .champ input { min-height: 34px; padding: 5px 10px; font-size: 0.88rem; }
+  .passeport.is-formulaire .passeport-logo,
+  .passeport[data-vue="inscription"] .passeport-logo { width: calc(var(--larg) * 0.16); height: calc(var(--larg) * 0.16); padding: calc(var(--larg) * 0.035); }
+  .passeport.is-formulaire .passeport-titre,
+  .passeport[data-vue="inscription"] .passeport-titre { margin-top: 8px; font-size: calc(var(--larg) * 0.058); }
+}
+@media (max-height: 560px) {
+  .passeport-livre { --larg: min(260px, 60vh); }
+  .passeport-face { padding: 20px 20px 16px; }
+  .passeport-titre { margin-top: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .passeport-livre { animation: none; }
+  .passeport.is-opening { animation: passeport-fondu 0.2s forwards; }
+  @keyframes passeport-fondu { to { opacity: 0; visibility: hidden; } }
+  .passeport.is-opening .passeport-page-tampon { animation: none; opacity: 1; transform: rotate(-9deg); }
+}
+
+/* Les portraits d'habitants sont des photos : elles remplissent leur cadre */
+.villager-card .photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: none;
+}
+.villager-card .photo-frame.no-photo { background: var(--papier-2); }
 
 /* ============================================================
    Photos de profil, profil, comparaison, chargement
