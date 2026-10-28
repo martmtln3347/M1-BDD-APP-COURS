@@ -33,8 +33,17 @@ Aucun fichier `.env` n'est nécessaire pour une démonstration : `docker-compose
 | API (exemple) | <http://localhost:8080/api/items.php?categorie=poisson> |
 | PostgreSQL | `localhost:5432`, base `nook_manager` (rôle `postgres` / mot de passe de `docker-compose.yml`) |
 | Redis | `localhost:6379` (mot de passe de `docker-compose.yml`) |
+| **Adminer** (interface PostgreSQL) | <http://localhost:8081/?pgsql=db&username=postgres&db=nook_manager> |
+| **RedisInsight** (interface Redis) | <http://localhost:5540> |
 
-**Un port est déjà pris ?** Les ports se changent par variable d'environnement : `APP_PORT=8081 POSTGRES_PORT=5433 REDIS_PORT=6380 docker compose up -d --build`.
+**Parcourir les deux bases à l'écran** (démonstration uniquement, liées à `127.0.0.1`) :
+
+- **Adminer** (PostgreSQL) : serveur, utilisateur et base sont préremplis ; saisir le mot de passe `demo-superuser-a-changer`. On voit les tables, les clés, et on peut lancer du SQL.
+- **RedisInsight** (Redis) : à la première ouverture, accepter ses conditions d'utilisation, puis *Add Redis database* avec hôte `redis`, port `6379`, mot de passe `demo-redis-a-changer`. On voit les clés `nook:*`, leur type (ZSET, LIST, STRING) et leur durée de vie (TTL).
+
+Le rôle `postgres` utilisé par Adminer est le super-utilisateur : il contourne la Row Level Security, ce qui convient pour observer les données. L'application, elle, se connecte avec le rôle limité `acnh_app`.
+
+**Un port est déjà pris ?** Les ports se changent par variable d'environnement : `APP_PORT=8082 POSTGRES_PORT=5433 REDIS_PORT=6380 docker compose up -d --build`.
 
 **Comptes de démonstration** (mot de passe `demo1234` pour tous)
 
@@ -107,7 +116,7 @@ Erreurs gérées : ressource absente (404), données invalides (400), non connec
 docker compose exec -T db psql -U postgres -d nook_manager < ../tests/securite.sql
 
 # API + Redis : écriture PostgreSQL puis relecture dans Redis, endpoint croisé, erreurs
-../tests/smoke-api.sh                      # BASE_URL=http://127.0.0.1:8081 si le port a changé
+../tests/smoke-api.sh                      # BASE_URL=http://127.0.0.1:8082 si le port a changé
 
 # Mesure de l'index : EXPLAIN (ANALYZE) avant / après
 docker compose exec -T db psql -U postgres -d nook_manager < ../docs/perf/index-explain.sql
@@ -125,7 +134,7 @@ docs/
   perf/                      mesure EXPLAIN avant / après index
   video/                     la vidéo de présentation (voir docs/video/README.md)
 docker/
-  docker-compose.yml         la pile complète : PostgreSQL, Redis, application, peuplement de Redis
+  docker-compose.yml         la pile complète : PostgreSQL, Redis, application, peuplement de Redis, Adminer, RedisInsight
   Dockerfile                 image de l'application
   .env.example               variables (facultatives pour une démo)
   init-sql/                  scripts PostgreSQL : schéma, vues, sécurité, données, requêtes avancées

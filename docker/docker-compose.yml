@@ -97,6 +97,38 @@ services:
     command: ["php", "/opt/init-nosql/peupler-redis.php"]
     restart: "no"
 
+  # ---------- Interfaces d'administration (confort de demonstration) ----------
+  # Adminer : parcourir PostgreSQL (tables, cles, requetes SQL). Connexion :
+  #   http://localhost:8081/?pgsql=db&username=postgres&db=nook_manager
+  # puis le mot de passe POSTGRES_PASSWORD (voir README).
+  adminer:
+    image: adminer:4
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+    ports:
+      - "127.0.0.1:${ADMINER_PORT:-8081}:8080"
+
+  # RedisInsight : parcourir Redis (cles, types, durees de vie). A la premiere
+  # ouverture il demande d'accepter ses conditions, puis "Add Redis database" :
+  # host redis, port 6379, mot de passe REDIS_PASSWORD (voir README).
+  redisinsight:
+    image: redis/redisinsight:2.70
+    depends_on:
+      redis:
+        condition: service_healthy
+    environment:
+      # Dans Docker, RedisInsight n'a pas de trousseau systeme : cette cle (factice,
+      # DEMONSTRATION uniquement) chiffre le mot de passe Redis qu'il enregistre.
+      RI_ENCRYPTION_KEY: ${REDISINSIGHT_ENCRYPTION_KEY:-demo-cle-redisinsight-a-changer}
+    ports:
+      - "127.0.0.1:${REDISINSIGHT_PORT:-5540}:5540"
+    volumes:
+      - redisinsight-data:/data
+
 volumes:
   db-data:
   redis-data:
+  redisinsight-data:

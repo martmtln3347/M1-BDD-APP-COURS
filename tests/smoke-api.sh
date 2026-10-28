@@ -2,7 +2,7 @@
 # Test de fumee de l'API et du lien PostgreSQL <-> Redis.
 #
 #   ./tests/smoke-api.sh                      (pile demarree avec docker compose up)
-#   BASE_URL=http://127.0.0.1:8081 ./tests/smoke-api.sh
+#   BASE_URL=http://127.0.0.1:8082 ./tests/smoke-api.sh
 #
 # Verifie, avec de vraies requetes HTTP : lecture et ecriture cote PostgreSQL,
 # lecture et ecriture cote Redis, un endpoint qui croise les deux bases, et la
