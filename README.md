@@ -13,6 +13,43 @@ Projet final **Bases de données relationnelles et non relationnelles** — Mast
 
 > **Pourquoi deux bases ?** PostgreSQL garde tout ce qui doit survivre et rester cohérent. Redis prend ce que PostgreSQL fait mal ou trop cher : classements en temps réel, état éphémère avec expiration, compteurs atomiques. Justification complète dans [`docs/presentation.md`](docs/presentation.md#5-justification-des-choix-techniques).
 
+## En bref
+
+| | PostgreSQL 16 | Redis 7 |
+| --- | --- | --- |
+| **Rôle** | la **vérité** : ce qui doit rester juste et lié | les **raccourcis** : ce qui doit être rapide ou temporaire |
+| **Contient** | `users`, `items`, `collections`, `amities`, `activites`, `tokens`, vues, vues matérialisées, Row Level Security | classements, popularité des objets, sessions, tentatives de connexion, notifications, cache |
+| **Volume chargé** | 687 objets · 1 503 joueurs · ≈ 272 000 lignes de collection · ≈ 4 500 amitiés · ≈ 3 900 activités | 7 classements, ≈ 10 000 membres |
+| **Si on le perd** | tout est perdu | rien : `peupler-redis` le reconstruit depuis PostgreSQL |
+
+Quand un joueur coche un objet, PostgreSQL enregistre le fait, puis Redis met à jour le classement au fil de l'eau : la lecture d'un classement est instantanée, sans recompter les 272 000 lignes. Les schémas (tables, clés primaires et étrangères, clés Redis) sont dans [`docs/schemas`](docs/schemas) et [`docker/init-nosql/cles.md`](docker/init-nosql/cles.md).
+
+## Accès rapide
+
+Après `docker compose up -d --build` (voir plus bas), tout est lié à `127.0.0.1`, pour la démonstration uniquement :
+
+| Service | Adresse | Identifiants |
+| --- | --- | --- |
+| **Application** (frontend + API) | <http://localhost:8080> | comptes de démonstration ci-dessous |
+| API (exemple) | <http://localhost:8080/api/items.php?categorie=poisson> | aucun |
+| **Adminer** (interface PostgreSQL) | <http://localhost:8081/?pgsql=db&username=postgres&db=nook_manager> | serveur, utilisateur et base préremplis ; mot de passe `demo-superuser-a-changer` |
+| **RedisInsight** (interface Redis) | <http://localhost:5540> | voir ci-dessous (première ouverture) |
+| PostgreSQL (client SQL) | `localhost:5432`, base `nook_manager` | rôle `postgres`, mot de passe `demo-superuser-a-changer` |
+| Redis (client) | `localhost:6379` | mot de passe `demo-redis-a-changer` |
+
+**RedisInsight, à la première ouverture** : accepter ses conditions d'utilisation (laisser « Usage Data » désactivé), puis *Add Redis database* et saisir l'URL `redis://default:demo-redis-a-changer@redis:6379` (ou hôte `redis`, port `6379`, mot de passe `demo-redis-a-changer`). On voit alors les clés `nook:*`, leur type (ZSET, LIST, STRING) et leur durée de vie (TTL). La connexion reste enregistrée tant qu'on ne supprime pas les volumes (`docker compose down -v`).
+
+**Adminer** : après authentification, le schéma `public` liste les tables, vues et vues matérialisées ; l'onglet *Commande SQL* permet de lancer une requête. Le rôle `postgres` est le super-utilisateur : il contourne la Row Level Security, ce qui convient pour observer les données. L'application, elle, se connecte avec le rôle limité `acnh_app`.
+
+**Comptes de démonstration** (mot de passe `demo1234` pour tous)
+
+| Compte | Particularité |
+| --- | --- |
+| `alice@example.fr` | profil public, amie de bob |
+| `bob@example.fr` | profil « amis seulement » |
+| `carol@example.fr` | profil privé |
+| `joueur0001@demo.example` … `joueur1500@demo.example` | 1 500 joueurs générés (70 % publics, 20 % amis, 10 % privés) |
+
 ## Démarrage rapide
 
 **Prérequis** : Docker (Docker Desktop, ou Docker Engine avec le plugin Compose). Rien d'autre : ni PHP, ni PostgreSQL, ni Redis à installer.
@@ -27,39 +64,9 @@ La première exécution construit l'image de l'application, crée le schéma, ch
 
 Aucun fichier `.env` n'est nécessaire pour une démonstration : `docker-compose.yml` fournit des valeurs par défaut (mots de passe factices, ports liés à `127.0.0.1` uniquement). Pour un autre usage, copier `docker/.env.example` en `docker/.env` et choisir de vrais mots de passe.
 
-| | URL / accès |
-| --- | --- |
-| **Application (frontend + API)** | <http://localhost:8080> |
-| API (exemple) | <http://localhost:8080/api/items.php?categorie=poisson> |
-| PostgreSQL | `localhost:5432`, base `nook_manager` (rôle `postgres` / mot de passe de `docker-compose.yml`) |
-| Redis | `localhost:6379` (mot de passe de `docker-compose.yml`) |
-| **Adminer** (interface PostgreSQL) | <http://localhost:8081/?pgsql=db&username=postgres&db=nook_manager> |
-| **RedisInsight** (interface Redis) | <http://localhost:5540> |
-
-**Parcourir les deux bases à l'écran** (démonstration uniquement, liées à `127.0.0.1`) :
-
-- **Adminer** (PostgreSQL) : serveur, utilisateur et base sont préremplis ; saisir le mot de passe `demo-superuser-a-changer`. On voit les tables, les clés, et on peut lancer du SQL.
-- **RedisInsight** (Redis) : à la première ouverture, accepter ses conditions d'utilisation, puis *Add Redis database* avec hôte `redis`, port `6379`, mot de passe `demo-redis-a-changer`. On voit les clés `nook:*`, leur type (ZSET, LIST, STRING) et leur durée de vie (TTL).
-
-Le rôle `postgres` utilisé par Adminer est le super-utilisateur : il contourne la Row Level Security, ce qui convient pour observer les données. L'application, elle, se connecte avec le rôle limité `acnh_app`.
+Adresses, identifiants et comptes de démonstration : voir **Accès rapide** ci-dessus.
 
 **Un port est déjà pris ?** Les ports se changent par variable d'environnement : `APP_PORT=8082 POSTGRES_PORT=5433 REDIS_PORT=6380 docker compose up -d --build`.
-
-**Comptes de démonstration** (mot de passe `demo1234` pour tous)
-
-| Compte | Particularité |
-| --- | --- |
-| `alice@example.fr` | profil public, amie de bob |
-| `bob@example.fr` | profil « amis seulement » |
-| `carol@example.fr` | profil privé |
-| `joueur0001@demo.example` … `joueur1500@demo.example` | 1 500 joueurs générés (70 % publics, 20 % amis, 10 % privés) |
-
-**Arrêter / repartir de zéro** :
-
-```bash
-docker compose down        # arrête, garde les données
-docker compose down -v     # arrête et SUPPRIME les données (le prochain démarrage recrée tout)
-```
 
 ## Données chargées
 
