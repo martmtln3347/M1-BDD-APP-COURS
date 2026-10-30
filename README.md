@@ -139,7 +139,6 @@ docs/
   presentation.md            document de présentation (MCD/MLD/MPD, modèle Redis, justifications, requêtes, index, sauvegarde)
   schemas/                   sources Mermaid des schémas
   perf/                      mesure EXPLAIN avant / après index
-  video/                     la vidéo de présentation (voir docs/video/README.md)
 docker/
   docker-compose.yml         la pile complète : PostgreSQL, Redis, application, peuplement de Redis, Adminer, RedisInsight
   Dockerfile                 image de l'application
@@ -154,10 +153,6 @@ app/                         API PHP et frontend
 tests/                       tests SQL et test de fumée de l'API
 tools/                       générateur du catalogue à partir des données du jeu
 ```
-
-## Vidéo de présentation
-
-Voir [`docs/video/README.md`](docs/video/README.md) (la vidéo, ou le lien vers elle, et le plan de tournage).
 
 ## Document de présentation
 
