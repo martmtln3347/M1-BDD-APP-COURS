@@ -13,6 +13,8 @@ Projet final **Bases de données relationnelles et non relationnelles** — Mast
 
 > **Pourquoi deux bases ?** PostgreSQL garde tout ce qui doit survivre et rester cohérent. Redis prend ce que PostgreSQL fait mal ou trop cher : classements en temps réel, état éphémère avec expiration, compteurs atomiques. Justification complète dans [`docs/presentation.md`](docs/presentation.md#5-justification-des-choix-techniques).
 
+**Vidéo de présentation (10 min) :** [`video/presentation.mp4`](video/presentation.mp4) — l'application, puis l'organisation des deux bases.
+
 ## En bref
 
 | | PostgreSQL 16 | Redis 7 |
@@ -135,6 +137,7 @@ Sauvegarde et restauration : `docker/scripts/sauvegarde.sh` et `restauration.sh`
 
 ```text
 README.md                    ce fichier
+video/presentation.mp4       vidéo de présentation (10 min)
 docs/
   presentation.md            document de présentation (MCD/MLD/MPD, modèle Redis, justifications, requêtes, index, sauvegarde)
   schemas/                   sources Mermaid des schémas
